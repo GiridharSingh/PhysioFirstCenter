@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+   <title>Contact</title>
+<!--content-->
+<div class="content indent">
+    <div class="container">
+        <section class="content_map">
+            <div class="google-map-api">
+                <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:100%;width:100%;'><div id='gmap_canvas' style='height:100%;width:100%;'></div><div><small><a href="http://www.embedgooglemaps.com/en/">Generate your map here, quick and easy!									Give your customers directions									Get found</a></small></div><div><small><a href="http://freedirectorysubmissionsites.com/">freedirectorysubmissionsites.com is the most complete web directory list of 2016. Here you can find all directories that have high PR and are search engine friendly. Submitting a link to a link directory is a valuable SEO-strategy, even in 2016. You have to pay attention to the following: if the links you put on a directory are dofollow, otherwise they are of no value to your business.</a></small></div>
+                <style>
+                    #gmap_canvas img {
+                        max-width: none !important;
+                        background: none !important;
+                    }
+                </style></div>
+                <script type='text/javascript'>function init_map(){var myOptions = {zoom:10,center:new google.maps.LatLng(28.5929914,77.30515909999997),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(28.5929914,77.30515909999997)});infowindow = new google.maps.InfoWindow({content:'<strong>Jaikant Nirala</strong><br>new ashok nagar delhi<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+            </div>
+        </section>
+    </div>
+    <div class="thumb-box15">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <h2>Addresses</h2>
+                    <div class="info">
+                        <h5>Address 1:</h5>
+                        <p>New Ashok Nagar. </p>
+                        <h5>Phones:</h5>
+                        <p>+91 852 779 5843<br>+111 xxx xxx xxx</p>
+                        <h5>Address 2:</h5>
+                        <p>xxx - xxx Mill Road, xxxxxxx, xxxx xxxx.</p>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <h2>Contact form</h2>
+                    <form id="contact-form" method="POST" action="bat/MailHandler.php">
+                        <div class="contact-form-loader"></div>
+                        <fieldset>
+                            <label class="name form-div-1">
+                                <input type="text" name="name" value="" data-constraints=" " id="regula-generated-709557">
+                                <span class="empty-message">*This field is required.</span>
+                                <span class="error-message">*This is not a valid name.</span>
+                                <span class="_placeholder" style="left: 0px; top: 0px; width: 183px; height: 48px;">* Your full name here:</span>
+                            </label>
+                            <label class="email form-div-2">
+                                <input type="text" name="email" value="" data-constraints=" " id="regula-generated-299529">
+                                <span class="empty-message">*This field is required.</span>
+                                <span class="error-message">*This is not a valid email.</span>
+                                <span class="_placeholder" style="left: 0px; top: 0px; width: 183px; height: 48px;">* Enter your e-mail:</span>
+                            </label>
+                            <label class="phone form-div-3">
+                                <input type="text" name="phone" value="" data-constraints=" " id="regula-generated-216576">
+                                <span class="empty-message">*This field is required.</span>
+                                <span class="error-message">*This is not a valid phone.</span>
+                                <span class="_placeholder" style="left: 0px; top: 0px; width: 183px; height: 48px;">Your telephone here:</span>
+                            </label>
+                            <label class="message form-div-4">
+                                <textarea name="message" data-constraints=" " id="regula-generated-128322"></textarea>
+                                <span class="empty-message">*This field is required.</span>
+                                <span class="error-message">*The message is too short.</span>
+                                <span class="_placeholder" style="left: 0px; top: 0px; width: 740px; height: 288px;">* Your comments &amp; questions:</span>
+                            </label>
+                            <!-- <label class="recaptcha"><span class="empty-message">*This field is required.</span></label> -->
+                            <div class="btns">
+                                <a href="#" data-type="submit" class="btn-default btn3">Submit</a>
+                                <p>* Required Fields</p>
+                            </div>
+                        </fieldset>
+                        <div class="modal fade response-message">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title">Modal title</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        You message has been sent! We will be in touch soon.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="stripHTML" value="true">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

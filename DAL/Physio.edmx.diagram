@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f44798812ece45d895206803d33111aa" Name="Diagram1">
+        <EntityTypeShape EntityType="PhysioDevModel.History" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhysioDevModel.Service" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="PhysioDevModel.Appointment" Width="1.5" PointX="3" PointY="5.375" />
+        <AssociationConnector Association="PhysioDevModel.FK_Appointment_Services" />
+        <EntityTypeShape EntityType="PhysioDevModel.Employee" Width="1.5" PointX="5.375" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

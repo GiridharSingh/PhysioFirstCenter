@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Models.EmployeeModel>
+
+
+    <div class="row">
+        
+        @foreach (var emp in Model)
+        {
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                <div class="thumb-pad3 maxheight" style="height: 400px;">
+                    <div class="box_inner">
+                        <div class="thumbnail">
+                            @{
+                                var imgSrc = "";
+                                if (emp.Image != null)
+                                {
+                                    var base64 = Convert.ToBase64String(emp.Image);
+                                    imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                }
+                            }
+                            <figure><img src="@imgSrc" alt=""></figure>
+                            <div class="caption">
+                                <a href="#">@string.Concat(emp.First_Name, "  ", emp.Last_Name)</a>
+                                <p>@emp.Description</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+   

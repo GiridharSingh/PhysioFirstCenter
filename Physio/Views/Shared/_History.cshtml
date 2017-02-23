@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Models.HistoryModel>
+
+<ul class="list4">
+    @foreach (var item in Model)
+    {
+    <li>
+        <time datetime="2014-01-01">@item.HistoryYear</time>
+        <div class="extra-wrap">
+            <p>@item.LongDesc</p>
+        </div>
+    </li>
+    }
+    
+</ul>
