@@ -17,7 +17,7 @@ namespace Physio.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional },
+                new { controller = "Employees", action = "Index", id = UrlParameter.Optional },
                 new string[] { "Admin.Controllers" }
             );
         }

@@ -7,23 +7,27 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.SessionState;
-
+//IControllerFactory
 namespace Admin.Controllers
 {
-    public class CustomControllerFactory: IControllerFactory
+    public class CustomControllerFactory: DefaultControllerFactory 
     {
-        private readonly string _controllerNamespace;
-        public CustomControllerFactory(string controllerNamespace)
+        //private readonly string _controllerNamespace;
+        //public CustomControllerFactory(string controllerNamespace)
+        //{
+        //    _controllerNamespace = controllerNamespace;
+        //}
+        //public CustomControllerFactory()
+        //{
+           
+        //}
+        public override IController CreateController(System.Web.Routing.RequestContext requestContext, string controllerName)
         {
-            _controllerNamespace = controllerNamespace;
-        }
-        public IController CreateController(System.Web.Routing.RequestContext requestContext, string controllerName)
-        {
-            Type controllerType = Type.GetType(string.Concat(_controllerNamespace, ".", controllerName, "Controller"));
-            dynamic service = new ServicesDAL();
+            IController controller = null;
+            dynamic service = null;
             switch (controllerName)
             {
-                case "Services" :
+                case "Services":
                     {
                         service = new ServicesDAL();
                         break;
@@ -37,19 +41,26 @@ namespace Admin.Controllers
                     {
                         service = new EmployeeDAL();
                         break;
-                    }
-            }
-            IController controller = Activator.CreateInstance(controllerType, new[] { service }) as Controller;
-            return controller;
+                    }                
 
-            
-            
+            }
+            Type controllerType = GetControllerType(requestContext, controllerName);
+            if (service != null)
+            {
+                controller = Activator.CreateInstance(controllerType, new[] { service }) as Controller;
+            }
+            else {
+                controller = Activator.CreateInstance(controllerType) as Controller;
+            }
+                               
+            return controller;                        
         }
+        
         public SessionStateBehavior GetControllerSessionBehavior(RequestContext requestContext, string controllerName)
         {
             return SessionStateBehavior.Default;
         }
-        public void ReleaseController(IController controller)
+        public override void ReleaseController(IController controller)
         {
             IDisposable disposable = controller as IDisposable;
             if (disposable != null)
