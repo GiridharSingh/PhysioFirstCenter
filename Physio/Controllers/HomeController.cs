@@ -50,7 +50,9 @@ namespace Physio.Controllers
 
         public ActionResult Services()
         {
-            return View();
+            ServicesDAL service = new ServicesDAL();
+            var res = service.GetAllServices();
+            return View(res);           
         }
     }
 }

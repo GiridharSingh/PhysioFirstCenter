@@ -53,8 +53,10 @@ namespace Admin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ServiceName,ShortDesc,LongDesc,IsActive")] ServicesModel service, HttpPostedFileBase file)
+        [ValidateInput(false)] 
+        public ActionResult Create([Bind(Include = "ServiceName,ShortDesc,LongDesc,IsActive,Priority")] ServicesModel service, HttpPostedFileBase file)
         {
 
 
@@ -86,7 +88,8 @@ namespace Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ServiceId,ServiceName,ShortDesc,LongDesc,IsActive")] ServicesModel service, HttpPostedFileBase file)
+        [ValidateInput(false)]
+        public ActionResult Edit([Bind(Include = "ServiceId,ServiceName,ShortDesc,LongDesc,IsActive,Priority")] ServicesModel service, HttpPostedFileBase file)
         {
             if (file != null)
             {

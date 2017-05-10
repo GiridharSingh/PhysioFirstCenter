@@ -3,6 +3,7 @@ using Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -34,10 +35,12 @@ namespace DAL
                     db.Services.Add(service);
                     db.SaveChanges();
                     return 1;
-                }
-                catch (Exception )
+                }               
+                catch (DbEntityValidationException ex)
                 {
                     return 0;
+                    throw ex;
+                    
                 }
             }
 

@@ -24,6 +24,13 @@
           <Property Name="ProceedBy" Type="bigint" />
           <Property Name="IsProceed" Type="bit" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'dbedd5f4eb2fd74f719e2ba7340087ec41.dbo.Directory' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Directory">
+          <Property Name="id" Type="int" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="15" />
+        </EntityType>-->
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="EmpId" />
@@ -67,6 +74,8 @@
           <Property Name="ShortDesc" Type="varchar" MaxLength="100" />
           <Property Name="LongDesc" Type="varchar" MaxLength="500" />
           <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="BannerImage" Type="varbinary(max)" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="CreatedBy" Type="bigint" />
@@ -138,6 +147,8 @@
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="Int64" />
           <NavigationProperty Name="Appointments" Relationship="PhysioDevModel.FK_Appointment_Services" FromRole="Service" ToRole="Appointment" />
+          <Property Name="Priority" Type="Int32" Nullable="true" />
+          <Property Name="BannerImage" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Appointment">
           <Key>
@@ -215,6 +226,8 @@
           <EntitySetMapping Name="Services">
             <EntityTypeMapping TypeName="PhysioDevModel.Service">
               <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="BannerImage" ColumnName="BannerImage" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />

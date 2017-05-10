@@ -30,6 +30,8 @@ namespace DAL
         public Nullable<long> CreatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public Nullable<long> UpdatedBy { get; set; }
+        public Nullable<int> Priority { get; set; }
+        public byte[] BannerImage { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Appointment> Appointments { get; set; }

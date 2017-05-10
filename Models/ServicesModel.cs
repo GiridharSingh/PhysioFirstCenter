@@ -12,8 +12,10 @@ namespace Models
         public long ServiceId { get; set; }
         public string ServiceName { get; set; }
         public string ShortDesc { get; set; }
-        public string LongDesc { get; set; }
+        public string LongDesc { get; set; }       
         public byte[] Image { get; set; }
+        public byte[] BannerImage { get; set; }
+        public Int32 Priority {get;set;}
         public bool IsActive { get; set; }
         public DateTime? CreatedDate { get; set; }
         public long? CreatedBy { get; set; }

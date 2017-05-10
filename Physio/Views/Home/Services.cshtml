@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Models.ServicesModel>
 @{
     ViewBag.Title = "Services";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,19 +9,39 @@
     <div class="thumb-box11">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp">
-                    <div class="thumb-pad2-1 maxheight">
-                        <div class="thumbnail">
-                            <figure><img src="~/Content/Images/page3_pic1.jpg" alt=""></figure>
-                            <div class="caption">
-                                <p class="title">Audiology Research</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                <a href="#"><img src="~/Content/Images/more_arrow1.png" alt=""></a>
+
+                @foreach (var item in Model)
+                {
+                   if (item.Priority == 1)
+                    {
+                    <div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp">
+                        <div class="thumb-pad2-1 maxheight">
+                            <div class="thumbnail">
+                                <figure>
+                                    @{var imgSrc = "";
+                                    if (item.Image != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(item.Image);
+                                        imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                    }
+                                    <img src="@imgSrc" alt=""/>
+                                    }
+                                
+                                </figure>
+                                <div class="caption">
+                                    <p class="title">
+                                        @Html.DisplayFor(modelItem => item.ServiceName)
+                                    </p>
+                                    <p> @Html.DisplayFor(modelItem => item.ShortDesc) </p>
+                                    <a href="#"><img src="~/Content/Images/more_arrow1.png" alt=""></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
+                    }
+                }
+
+                @*<div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="thumb-pad2-1 maxheight">
                         <div class="thumbnail">
                             <figure><img src="~/Content/Images/page3_pic2.jpg" alt=""></figure>
@@ -44,7 +64,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>*@
             </div>
         </div>
     </div>
@@ -61,7 +81,7 @@
             </div>
         </div>
     </div>
-    <div class="thumb-box12">
+    <div class="thumb-box12" style="display:none">
         <div class="container">
             <h2 class="wow fadeInLeft">Our services</h2>
             <div class="row">
@@ -170,20 +190,36 @@
     </div>
     <div class="thumb-box13">
         <div class="container">
-            <h2 class="wow fadeInLeft">Population Health and Wellness Programs</h2>
+            <h2 class="wow fadeInLeft">Our services</h2>            
             <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeInUp">
-                    <div class="thumb-pad6">
-                        <div class="thumbnail">
-                            <figure><img src="~/Content/Images/page3_pic4.jpg" alt=""></figure>
-                            <div class="caption">
-                                <a href="#">Healthy Living</a>
-                                <p>Mauris fermentum tortor non enim aliquet condimentum. Nam aliquam pretium feugiat. Duis sem est, viverra eu interdum ac, suscipit nec mauris.</p>
+                @foreach (var item in Model)
+                {
+                    if (item.Priority != 1)
+                    {
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeInUp">
+                            <div class="thumb-pad6">
+                                <div class="thumbnail">
+                                    <figure>
+                                        @{var imgSrc = "";
+                                        if (item.Image != null)
+                                        {
+                                            var base64 = Convert.ToBase64String(item.Image);
+                                            imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                        }
+                                        <img src="@imgSrc" alt="" />
+                                        }
+
+                                    </figure>
+                                    <div class="caption">
+                                        <a href="#">@Html.DisplayFor(modelItem => item.ServiceName) </a>
+                                        <p> @Html.DisplayFor(modelItem => item.ShortDesc) </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeInUp" data-wow-delay="0.1s">
+                    }
+                }			
+                @*<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="thumb-pad6">
                         <div class="thumbnail">
                             <figure><img src="~/Content/Images/page3_pic5.jpg" alt=""></figure>
@@ -193,8 +229,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeInUp" data-wow-delay="0.2s">
+                </div>*@
+                @*<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="thumb-pad6">
                         <div class="thumbnail">
                             <figure><img src="~/Content/Images/page3_pic6.jpg" alt=""></figure>
@@ -215,7 +251,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>*@
             </div>
         </div>
     </div>

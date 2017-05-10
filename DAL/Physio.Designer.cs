@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Project\Physio\DAL\Physio.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\POCApp\PhysioFirst\GitPhysioFirst\DAL\Physio.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
