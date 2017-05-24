@@ -30,9 +30,14 @@
                                 </figure>
                                 <div class="caption">
                                     <p class="title">
-                                        @Html.DisplayFor(modelItem => item.ServiceName)
+                                        @Html.DisplayFor(modelItem => item.ServiceName)                                       
                                     </p>
-                                    <p> @Html.DisplayFor(modelItem => item.ShortDesc) </p>
+                                    @{ var shortDesc = item.ShortDesc;
+
+                                    @Html.Raw(shortDesc)
+
+                                    }
+                                                                                                                                                                                                           
                                     <a href="#"><img src="~/Content/Images/more_arrow1.png" alt=""></a>
                                 </div>
                             </div>
@@ -40,31 +45,7 @@
                     </div>
                     }
                 }
-
-                @*<div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="thumb-pad2-1 maxheight">
-                        <div class="thumbnail">
-                            <figure><img src="~/Content/Images/page3_pic2.jpg" alt=""></figure>
-                            <div class="caption">
-                                <p class="title">Hearing Loss Identification</p>
-                                <p>Massa dolor sit amet consectetur adipisicing elit sed do eiusmod tempor</p>
-                                <a href="#"><img src="~/Content/Images/more_arrow1.png" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="thumb-pad2-1 maxheight">
-                        <div class="thumbnail">
-                            <figure><img src="~/Content/Images/page3_pic3.jpg" alt=""></figure>
-                            <div class="caption">
-                                <p class="title">Hearing Assessment</p>
-                                <p>Ed dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut et dolore magna aliqua.</p>
-                                <a href="#"><img src="~/Content/Images/more_arrow1.png" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>*@
+                             
             </div>
         </div>
     </div>
@@ -212,7 +193,12 @@
                                     </figure>
                                     <div class="caption">
                                         <a href="#">@Html.DisplayFor(modelItem => item.ServiceName) </a>
-                                        <p> @Html.DisplayFor(modelItem => item.ShortDesc) </p>
+                                       @{var shortDesc = item.ShortDesc;
+
+                                            @Html.Raw(shortDesc)
+                                       }
+                                                                                  
+
                                     </div>
                                 </div>
                             </div>
@@ -230,28 +216,7 @@
                         </div>
                     </div>
                 </div>*@
-                @*<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="thumb-pad6">
-                        <div class="thumbnail">
-                            <figure><img src="~/Content/Images/page3_pic6.jpg" alt=""></figure>
-                            <div class="caption">
-                                <a href="#">Health Guidance</a>
-                                <p>Duis sem est, viverra eu interdum ac, suscipit nec mauris. Suspendisse commodo tempor sagittis! In justo est, sollicitudin eu scelerisque pretium.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="thumb-pad6">
-                        <div class="thumbnail">
-                            <figure><img src="~/Content/Images/page3_pic7.jpg" alt=""></figure>
-                            <div class="caption">
-                                <a href="#">Health Plan Admin</a>
-                                <p>Suscipit nec mauris. Suspendisse commodo tempor sagittis! In justo est, sollicitudin eu scelerisque pretium, placerat eget elit. Praesent faucibus.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>*@
+              
             </div>
         </div>
     </div>

@@ -70,9 +70,9 @@ warning 6013: The table/view 'dbedd5f4eb2fd74f719e2ba7340087ec41.dbo.Directory' 
             <PropertyRef Name="ServiceId" />
           </Key>
           <Property Name="ServiceId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ServiceName" Type="varchar" MaxLength="50" />
-          <Property Name="ShortDesc" Type="varchar" MaxLength="100" />
-          <Property Name="LongDesc" Type="varchar" MaxLength="500" />
+          <Property Name="ServiceName" Type="varchar" MaxLength="100" />
+          <Property Name="ShortDesc" Type="varchar" MaxLength="500" />
+          <Property Name="LongDesc" Type="varchar(max)" />
           <Property Name="Image" Type="varbinary(max)" />
           <Property Name="Priority" Type="int" />
           <Property Name="BannerImage" Type="varbinary(max)" />
@@ -137,9 +137,9 @@ warning 6013: The table/view 'dbedd5f4eb2fd74f719e2ba7340087ec41.dbo.Directory' 
             <PropertyRef Name="ServiceId" />
           </Key>
           <Property Name="ServiceId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ShortDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="LongDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ShortDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LongDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />

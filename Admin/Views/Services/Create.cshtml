@@ -26,8 +26,8 @@
         // Initialize your tinyMCE Editor with your preferred options
         tinyMCE.init({
             // General options
-            //selector: '#myTextarea',
-            mode: "textareas",
+            selector: '#tinyMCETextarea',
+            //mode: "textareas",
             theme: "modern",
             theme: 'modern',
             width: 600,
@@ -37,7 +37,7 @@
               'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
               'save table contextmenu directionality emoticons template paste textcolor'
             ],
-            content_css: 'css/content.css',
+            //content_css: 'css/content.css',
             toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons'
 
         });
@@ -111,7 +111,7 @@
                     @Html.LabelFor(model => model.LongDesc, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         <!-- This will contain your HtmlContent and use the TinyMCE editor-->
-                        @Html.TextAreaFor(model => model.LongDesc)                        
+                        @Html.TextAreaFor(model => model.LongDesc, new { @id = "tinyMCETextarea" })                        
                         @Html.ValidationMessageFor(model => model.LongDesc, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -123,13 +123,14 @@
                          { new SelectListItem { Text = "High", Value = "1"},
                            new SelectListItem { Text = "Medium", Value = "2", Selected=true},
                            new SelectListItem { Text = "Low", Value = "3"}
-                           })
+                           }, new { @class = "form-control"})
                         
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Save" class="btn btn-default" />
+                        @Html.ActionLink("Back", "Index", "Services", new { area = "Admin" }, new { @class = "btn btn-default" })                        
                     </div>
                 </div>
                
