@@ -5,6 +5,23 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="PhysioDevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AboutClinic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="ShortDesc" Type="varchar" MaxLength="500" />
+          <Property Name="LongDesc" Type="varchar(max)" />
+          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="BannerImage" Type="varbinary(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="bigint" />
+        </EntityType>
         <EntityType Name="Appointment">
           <Key>
             <PropertyRef Name="AppointmentId" />
@@ -24,13 +41,6 @@
           <Property Name="ProceedBy" Type="bigint" />
           <Property Name="IsProceed" Type="bit" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'dbedd5f4eb2fd74f719e2ba7340087ec41.dbo.Directory' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Directory">
-          <Property Name="id" Type="int" />
-          <Property Name="PersonName" Type="nvarchar" MaxLength="50" />
-          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="15" />
-        </EntityType>-->
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="EmpId" />
@@ -95,6 +105,7 @@ warning 6013: The table/view 'dbedd5f4eb2fd74f719e2ba7340087ec41.dbo.Directory' 
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="PhysioDevModelStoreContainer">
+          <EntitySet Name="AboutClinic" EntityType="Self.AboutClinic" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
@@ -131,6 +142,7 @@ warning 6013: The table/view 'dbedd5f4eb2fd74f719e2ba7340087ec41.dbo.Directory' 
             <End Role="Appointment" EntitySet="Appointments" />
           </AssociationSet>
           <EntitySet Name="Employees" EntityType="PhysioDevModel.Employee" />
+          <EntitySet Name="AboutClinics" EntityType="PhysioDevModel.AboutClinic" />
         </EntityContainer>
         <EntityType Name="Service">
           <Key>
@@ -201,6 +213,23 @@ warning 6013: The table/view 'dbedd5f4eb2fd74f719e2ba7340087ec41.dbo.Directory' 
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AboutClinic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ShortDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LongDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="BannerImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int64" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -279,6 +308,24 @@ warning 6013: The table/view 'dbedd5f4eb2fd74f719e2ba7340087ec41.dbo.Directory' 
                 <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
                 <ScalarProperty Name="First_Name" ColumnName="First_Name" />
                 <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AboutClinics">
+            <EntityTypeMapping TypeName="PhysioDevModel.AboutClinic">
+              <MappingFragment StoreEntitySet="AboutClinic">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="BannerImage" ColumnName="BannerImage" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="LongDesc" ColumnName="LongDesc" />
+                <ScalarProperty Name="ShortDesc" ColumnName="ShortDesc" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

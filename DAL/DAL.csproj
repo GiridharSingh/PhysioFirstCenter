@@ -52,6 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutClinic.cs">
+      <DependentUpon>Physio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AboutClinicDAL.cs" />
     <Compile Include="ApplointmentDAL.cs" />
     <Compile Include="Appointment.cs">
       <DependentUpon>Physio.tt</DependentUpon>
@@ -64,6 +68,7 @@
     <Compile Include="History.cs">
       <DependentUpon>Physio.tt</DependentUpon>
     </Compile>
+    <Compile Include="Interface\IAboutClinic.cs" />
     <Compile Include="Interface\IAppointment.cs" />
     <Compile Include="Interface\IEmployee.cs" />
     <Compile Include="Interface\IHistory.cs" />

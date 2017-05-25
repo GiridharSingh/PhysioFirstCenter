@@ -29,5 +29,6 @@ namespace DAL
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<Appointment> Appointments { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<AboutClinic> AboutClinics { get; set; }
     }
 }

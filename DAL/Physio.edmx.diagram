@@ -9,7 +9,8 @@
         <EntityTypeShape EntityType="PhysioDevModel.Service" Width="1.5" PointX="1" PointY="0.75" />
         <EntityTypeShape EntityType="PhysioDevModel.Appointment" Width="1.5" PointX="3.125" PointY="0.75" />
         <AssociationConnector Association="PhysioDevModel.FK_Appointment_Services" />
-        <EntityTypeShape EntityType="PhysioDevModel.Employee" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PhysioDevModel.Employee" Width="1.5" PointX="6.5" PointY="0.75" />
+        <EntityTypeShape EntityType="PhysioDevModel.AboutClinic" Width="1.5" PointX="8.125" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

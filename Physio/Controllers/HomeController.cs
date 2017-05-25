@@ -14,7 +14,8 @@ namespace Physio.Controllers
         private PhysioDevEntities db = new PhysioDevEntities();
         public ActionResult Index()
         {
-            return View();
+            Physio.Models.HomeViewModel homeModel = new Physio.Models.HomeViewModel();
+            return View(homeModel);
         }
 
         public ActionResult About()

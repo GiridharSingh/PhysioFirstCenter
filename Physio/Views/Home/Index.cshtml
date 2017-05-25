@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Physio.Models.HomeViewModel
+@{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -23,20 +24,42 @@
         <div class="container">
             <p class="title wow fadeInLeft">ABOUT CLINIC</p>
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp">
-                    <div class="thumb-pad1">
-                        <div class="thumbnail">
-                            <figure><img src="~/Content/images/page2_pic2.jpg" alt=""></figure>
-                            <strong><img src="~/Content/Images/page1_icon1.png" alt=""></strong>
-                            <div class="caption">
-                                <p class="description">COMFORTABLE CLINIC</p>
-                                <p>Our clinic feels like a comfortable physiotherapy clinic in lush green and calm surroundings in Noida.</p>
-                                <a href="#" class="btn-default btn2">read more <i></i></a>
+                @foreach (var item in Model.lstAboutClinic)
+                {
+                    <div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp">
+                        <div class="thumb-pad1">
+                            <div class="thumbnail">
+                                <strong><img src="~/Content/Images/page1_icon1.png" alt=""></strong>
+                                <div class="caption">
+                                    <p class="description">
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </p>
+                                    <div>
+                                        @{ var shortDesc = item.ShortDesc;
+
+                                        @Html.Raw(shortDesc)
+
+                                        }
+                                    </div>
+                                    <figure><img src="~/Content/images/page2_pic2.jpg" alt=""></figure>
+                                    @*<figure>
+                                        @{var imgSrc = "";
+                                        if (item.Image != null)
+                                        {
+                                            var base64 = Convert.ToBase64String(item.Image);
+                                            imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                        }
+                                        <img src="@imgSrc" alt="" />
+                                        }
+
+                                    </figure>*@
+                                    <a href="#" class="btn-default btn2">read more <i></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
+                }
+                @*<div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="thumb-pad1">
                         <div class="thumbnail">
                             <figure><img src="~/Content/images/page2_pic3.jpg" alt=""></figure>
@@ -61,26 +84,54 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>*@
             </div>
         </div>
     </div>
-    <div class="thumb-box3">
-        <div class="container">
+    <div class="thumb-box2">
+        <div class="container">           
+            <p class="title wow fadeInLeft">Our services</p>           
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-4 wow fadeInLeft" data-wow-delay="0.2s">
-                    <div class="thumb-pad2 maxheight">
-                        <div class="thumbnail">
-                            <figure><img src="~/Content/Images/page1_pic1.jpg" alt=""></figure>
-                            <div class="caption">
-                                <p class="title">lorem ipsum</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                <a href="#"><img src="~/Content/Images/more_arrow1.png" alt=""></a>
+                @foreach (var item in Model.lstServices)
+                {
+                    if (item.Priority == 1)
+                    {
+                        <div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp">
+                            <div class="thumb-pad2-1 maxheight">
+                                <div class="thumbnail">
+                                    <figure>
+                                        @{var imgSrc = "";
+                                        if (item.Image != null)
+                                        {
+                                            var base64 = Convert.ToBase64String(item.Image);
+                                            imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                        }
+                                        <img src="@imgSrc" alt="" />
+                                        }
+
+                                    </figure>
+                                    <div class="caption">
+                                            <p class="title">
+                                                @Html.DisplayFor(modelItem => item.ServiceName)
+                                            </p>
+                                            <div>
+                                                @{ var shortDesc = item.ShortDesc;
+
+                                                @Html.Raw(shortDesc)
+
+                                                }
+                                            </div>
+                                                @*<a href="#"><img src="~/Content/Images/more_arrow1.png" alt=""></a>*@
+                                                <a href="@Url.Action("Index", "ServicesDetail", new { id = item.ServiceId })">
+                                                    <img alt="Click here" src="@Url.Content("~/Content/Images/more_arrow1.png")">
+                                                </a>
+                                        </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 wow fadeInLeft" data-wow-delay="0.1s">
+                    }
+                }
+                @*<div class="col-lg-4 col-md-4 col-sm-4 wow fadeInLeft" data-wow-delay="0.1s">
                     <div class="thumb-pad2 maxheight">
                         <div class="thumbnail">
                             <figure><img src="~/Content/Images/page1_pic2.jpg" alt=""></figure>
@@ -103,7 +154,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>*@
             </div>
         </div>
     </div>
