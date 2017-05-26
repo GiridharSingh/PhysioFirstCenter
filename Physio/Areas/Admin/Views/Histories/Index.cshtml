@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DAL.History>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" id="tblHistory">
+    <thead>
+        <tr>
+            <th>
+               Year
+            </th>
+            <th>
+               Short Description
+            </th>
+            <th>
+              Long Description
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HistoryYear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortDesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LongDesc)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.HistoryId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.HistoryId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.HistoryId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+
+    $(document).ready(function () {
+        $('#tblHistory').DataTable({
+            "columnDefs": [
+                { "width": "15%", "targets": 0 },
+                { "width": "20%", "targets": 1 },
+                { "width": "50%", "targets": 2 },
+                { "width": "15%", "targets": 3 }
+            ]
+        });
+    });
+</script>

@@ -1,0 +1,78 @@
+﻿@model Models.EmployeeModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label col-md-2">First Name:</label>
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.First_Name)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Last Name:</label>
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Last_Name)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Email:</label>
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Email)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Gender:</label>
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Gender)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Join Date:</label>
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Joined_date)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Designation:</label>
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Designation)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Description:</label>
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Description)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label col-md-2">Image:</label>
+                <div class="col-md-10">
+                    @{
+                        var imgSrc = "";
+                        if (Model.Image != null)
+                        {
+                            var base64 = Convert.ToBase64String(Model.Image);
+                            imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        }
+                    }
+                    <img src="@imgSrc" alt="" />
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmpId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

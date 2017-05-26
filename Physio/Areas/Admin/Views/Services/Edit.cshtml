@@ -1,0 +1,158 @@
+﻿@model Models.ServicesModel
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    #dvPreview {
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);
+        max-height: 200px;
+        max-width: 200px;
+        min-height: 200px;
+        min-width: 200px;
+        display: block;
+        border: 1px;
+    }
+
+        #dvPreview img {
+            max-height: 200px;
+            max-width: 200px;
+        }
+</style>
+<h4>Update Service</h4>
+<script>
+    $(function () {
+        // Initialize your tinyMCE Editor with your preferred options
+        tinyMCE.init({
+            // General options
+            selector: '#tinyMCETextarea',
+            //mode: "textareas",
+            theme: "modern",
+            theme: 'modern',
+            width: 600,
+            height: 300,
+            plugins: [
+              'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+              'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+              'save table contextmenu directionality emoticons template paste textcolor'
+            ],
+            //content_css: 'css/content.css',
+            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons'
+
+        });
+        tinyMCE.activeEditor.setContent();
+
+    $("#fileupload").change(function () {
+        $("#dvPreview").html("");
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+        if (regex.test($(this).val().toLowerCase())) {
+            $("#dvPreview").show();
+            $("#dvPreview").append("<img />");
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#dvPreview img").attr("src", e.target.result);
+            }
+            reader.readAsDataURL($(this)[0].files[0]);
+        } else {
+            alert("Please upload a valid image file.");
+        }
+    });
+
+    $("#ServicePriority").val($('.hdnPriority').val());
+    $("#ServicePriority").change(function () {
+        $('.hdnPriority').val($("#ServicePriority option:selected").val());
+    });
+});
+</script>
+@{
+    var imgSrc = "";
+    if (Model.Image != null)
+    {
+        var base64 = Convert.ToBase64String(Model.Image);
+         imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+    }
+}
+
+
+@using (Html.BeginForm("Edit", "Services", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ServiceName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.HiddenFor(model => model.ServiceId)
+                        @Html.TextBoxFor(model => model.ServiceName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ServiceName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShortDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.ShortDesc, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ShortDesc, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LongDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <!-- This will contain your HtmlContent and use the TinyMCE editor-->
+                        @Html.TextAreaFor(model => model.LongDesc, new { @id = "tinyMCETextarea" })                        
+                        @Html.HiddenFor(model=>model.IsActive)
+                        @Html.ValidationMessageFor(model => model.LongDesc, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Priority, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.HiddenFor(model => model.Priority, htmlAttributes: new { @class = "hdnPriority" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("ServicePriority", new List<SelectListItem>
+                         { new SelectListItem { Text = "High", Value = "1"},
+                           new SelectListItem { Text = "Medium", Value = "2"},
+                           new SelectListItem { Text = "Low", Value = "3"}
+                           }, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />                       
+                        @Html.ActionLink("Back", "Index", "Services", new { area = "Admin" }, new { @class = "btn btn-default" })                     
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input id="fileupload" type="file" name="file" />
+                        <div id="dvPreview">
+                            <img src="@imgSrc" />
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+       
+
+
+    </div>
+
+}
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
