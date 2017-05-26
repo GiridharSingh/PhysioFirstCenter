@@ -34,13 +34,9 @@
                                     <p class="description">
                                         @Html.DisplayFor(modelItem => item.Name)
                                     </p>
-                                    <div>
-                                        @{ var shortDesc = item.ShortDesc;
-
-                                        @Html.Raw(shortDesc)
-
-                                        }
-                                    </div>
+                                    <p>
+                                        @Html.DisplayFor(modelItem => item.ShortDesc)
+                                    </p> 
                                     <figure><img src="~/Content/images/page2_pic2.jpg" alt=""></figure>
                                     @*<figure>
                                         @{var imgSrc = "";
@@ -53,38 +49,13 @@
                                         }
 
                                     </figure>*@
-                                    <a href="#" class="btn-default btn2">read more <i></i></a>
+                                    
+                                    <a href="@Url.Action("Index", "ClinicDetail", new { id = item.Id })" class="btn-default btn2">read more <i></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                }
-                @*<div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="thumb-pad1">
-                        <div class="thumbnail">
-                            <figure><img src="~/Content/images/page2_pic3.jpg" alt=""></figure>
-                            <strong><img src="~/Content/Images/page1_icon1.png" alt=""></strong>
-                            <div class="caption">
-                                <p class="description">ACCESSIBLE</p>
-                                <p>The location of our clinic is very accessible in the geographic center of the city with absolutely clean and calm surroundings.</p>
-                                <a href="#" class="btn-default btn2">read more <i></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="thumb-pad1">
-                        <div class="thumbnail">
-                            <figure><img src="~/Content/images/page2_pic4.jpg" alt=""></figure>
-                            <strong><img src="~/Content/Images/page1_icon1.png" alt=""></strong>
-                            <div class="caption">
-                                <p class="description">PERSONALIZED TREATMENT</p>
-                                <p>You will receive a full individualized treatment.</p>
-                                <a href="#" class="btn-default btn2">read more <i></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>*@
+                }               
             </div>
         </div>
     </div>
@@ -114,47 +85,18 @@
                                             <p class="title">
                                                 @Html.DisplayFor(modelItem => item.ServiceName)
                                             </p>
-                                            <div>
-                                                @{ var shortDesc = item.ShortDesc;
-
-                                                @Html.Raw(shortDesc)
-
-                                                }
-                                            </div>
-                                                @*<a href="#"><img src="~/Content/Images/more_arrow1.png" alt=""></a>*@
-                                                <a href="@Url.Action("Index", "ServicesDetail", new { id = item.ServiceId })">
-                                                    <img alt="Click here" src="@Url.Content("~/Content/Images/more_arrow1.png")">
-                                                </a>
+                                            <p>
+                                                @Html.DisplayFor(modelItem => item.ShortDesc)                                           
+                                            </p>                                               
+                                            <a href="@Url.Action("Index", "ServicesDetail", new { id = item.ServiceId })">
+                                                <img alt="Click here" src="@Url.Content("~/Content/Images/more_arrow1.png")">
+                                            </a>
                                         </div>
                                 </div>
                             </div>
                         </div>
                     }
-                }
-                @*<div class="col-lg-4 col-md-4 col-sm-4 wow fadeInLeft" data-wow-delay="0.1s">
-                    <div class="thumb-pad2 maxheight">
-                        <div class="thumbnail">
-                            <figure><img src="~/Content/Images/page1_pic2.jpg" alt=""></figure>
-                            <div class="caption">
-                                <p class="title">consequatur</p>
-                                <p>Massa dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore est. </p>
-                                <a href="#"><img src="~/Content/Images/more_arrow1.png" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 wow fadeInLeft">
-                    <div class="thumb-pad2 maxheight">
-                        <div class="thumbnail">
-                            <figure><img src="~/Content/Images/page1_pic3.jpg" alt=""></figure>
-                            <div class="caption">
-                                <p class="title">laboriosam</p>
-                                <p>Ed dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
-                                <a href="#"><img src="~/Content/Images/more_arrow1.png" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>*@
+                }              
             </div>
         </div>
     </div>

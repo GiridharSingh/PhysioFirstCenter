@@ -32,13 +32,12 @@
                                     <p class="title">
                                         @Html.DisplayFor(modelItem => item.ServiceName)                                       
                                     </p>
-                                    @{ var shortDesc = item.ShortDesc;
-
-                                    @Html.Raw(shortDesc)
-
-                                    }
-                                                                                                                                                                                                           
-                                    <a href="#"><img src="~/Content/Images/more_arrow1.png" alt=""></a>
+                                    <p>
+                                        @Html.DisplayFor(modelItem => item.ShortDesc)
+                                    </p>                                                                                                                                                                                                                                                                                  
+                                    <a href="@Url.Action("Index", "ServicesDetail", new { id = item.ServiceId })">
+                                        <img alt="Click here" src="@Url.Content("~/Content/Images/more_arrow1.png")">
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -192,31 +191,19 @@
 
                                     </figure>
                                     <div class="caption">
-                                        <a href="#">@Html.DisplayFor(modelItem => item.ServiceName) </a>
-                                       @{var shortDesc = item.ShortDesc;
-
-                                            @Html.Raw(shortDesc)
-                                       }
-                                                                                  
-
+                                        <a href="@Url.Action("Index", "ServicesDetail", new { id = item.ServiceId })">@Html.DisplayFor(modelItem => item.ServiceName) </a>
+                                        <p>
+                                            @Html.DisplayFor(modelItem => item.ShortDesc)
+                                        </p>                                        
+                                                                                
                                     </div>
+                                    <a href="@Url.Action("Index", "ServicesDetail", new { id = item.ServiceId })" class="btn-default btn2">read more <i></i></a>
                                 </div>
                             </div>
                         </div>
                     }
                 }			
-                @*<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="thumb-pad6">
-                        <div class="thumbnail">
-                            <figure><img src="~/Content/Images/page3_pic5.jpg" alt=""></figure>
-                            <div class="caption">
-                                <a href="#">Health Information</a>
-                                <p>Nam aliquam pretium feugiat. Duis sem est, viverra eu interdum ac, suscipit nec mauris. Suspendisse commodo tempor sagittis! In justo est, sollicitudin.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>*@
-              
+                            
             </div>
         </div>
     </div>
