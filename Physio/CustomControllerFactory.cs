@@ -12,16 +12,8 @@ namespace Physio
 {
     public class CustomControllerFactory: DefaultControllerFactory 
     {
-        //private readonly string _controllerNamespace;
-        //public CustomControllerFactory(string controllerNamespace)
-        //{
-        //    _controllerNamespace = controllerNamespace;
-        //}
-        //public CustomControllerFactory()
-        //{
-           
-        //}
-        public override IController CreateController(System.Web.Routing.RequestContext requestContext, string controllerName)
+        
+        public override IController CreateController(System.Web.Routing.RequestContext requestContext, string controllerName)  
         {
             IController controller = null;
             dynamic service = null;

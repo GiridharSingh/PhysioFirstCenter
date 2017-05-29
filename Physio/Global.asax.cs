@@ -20,13 +20,12 @@ namespace Physio
         }
         
         protected void Application_Error(object sender, EventArgs e)
-        {
-            Server.ClearError();
+        {  
+            //Need to uncomment finally  
+            //Server.ClearError();
         }
         private void RegisterCustomControllerFactory()
-        {
-            //DefaultControllerFactory DefaultFactory = new DefaultControllerFactory();
-            //IControllerFactory factory = new CustomControllerFactory("Admin.Controllers");
+        {          
             IControllerFactory factory = new CustomControllerFactory();
             ControllerBuilder.Current.SetControllerFactory(factory);
         }

@@ -13,13 +13,13 @@ namespace Physio.Areas.Admin
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
-        {
+        {            
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                new string[] { "Admin.Controllers" }
-            );
+                defaults: new { action = "Index", controller = "Home", id = UrlParameter.Optional },
+                namespaces: new[] { "Physio.Areas.Admin.Controllers" }
+                    );
         }
     }
 }

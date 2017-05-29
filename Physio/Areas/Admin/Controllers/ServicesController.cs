@@ -25,7 +25,7 @@ namespace Physio.Areas.Admin.Controllers
         {
             
             var res = _IService.GetAllServices();
-            return View(res);
+            return View("Index",res);
         }
 
         // GET: Services/Details/5

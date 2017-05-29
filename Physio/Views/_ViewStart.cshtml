@@ -3,16 +3,16 @@
 }
 
 @*@{
-    string CurrentName = Convert.ToString(HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"]);
+    string CurrentName = Convert.ToString(HttpContext.Current.Request.RequestContext.RouteData.DataTokens.Values["area"]);
     dynamic Layout;
     switch (CurrentName)
     {
-        case "User":
-            Layout = "~/Views/Shared/_Layout.cshtml";
+        case "Admin":
+            Layout = "~/Views/Shared/Admin_Layout.cshtml";
             break;
         default:
             //Admin layout
-            Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+            Layout = "~/Views/Shared/_Layout.cshtml";
             break;
     }
 }*@  
