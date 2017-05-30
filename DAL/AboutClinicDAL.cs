@@ -8,10 +8,11 @@ using System.Data.Entity.Validation;
 using Models;
 using System.Web;
 using System.IO;
+using DAL.Interface;
 
 namespace DAL
 {
-    public class AboutClinicDAL
+    public class AboutClinicDAL : IAboutClinic
     {
         public int AddAbout(AboutClinicModel objAbout, HttpPostedFileBase file)
         {
@@ -76,15 +77,18 @@ namespace DAL
         public AboutClinicModel GetAbout(long? AboutId)
         {
             AboutClinicModel objAboutClinicModel = new AboutClinicModel();
-            using (PhysioDevEntities db = new PhysioDevEntities())
+            if (AboutId != null)
             {
-                var about = db.AboutClinics.Where(m => m.Id == AboutId).FirstOrDefault();
-                about.CopyProperties(objAboutClinicModel);
+                using (PhysioDevEntities db = new PhysioDevEntities())
+                {
+                    var about = db.AboutClinics.Where(m => m.Id == AboutId).FirstOrDefault();
+                    about.CopyProperties(objAboutClinicModel);
+                }
             }
             return objAboutClinicModel;
         }
 
-        public int DeleteAbout(AboutClinicModel objAbout)
+        public int UpdateAbout(AboutClinicModel objAbout)
         {
             using (PhysioDevEntities db = new PhysioDevEntities())
             {
@@ -105,5 +109,6 @@ namespace DAL
                 }
             }
         }
+       
     }
 }

@@ -16,30 +16,35 @@ namespace Physio
         public override IController CreateController(System.Web.Routing.RequestContext requestContext, string controllerName)  
         {
             IController controller = null;
-            dynamic service = null;
+            dynamic obj = null;
             switch (controllerName)
             {
                 case "Services":
                     {
-                        service = new ServicesDAL();
+                        obj = new ServicesDAL();
                         break;
                     }
                 case "Histories":
                     {
-                        service = new HistoryDAL();
+                        obj = new HistoryDAL();
                         break;
                     }
                 case "Employees":
                     {
-                        service = new EmployeeDAL();
+                        obj = new EmployeeDAL();
                         break;
-                    }                
+                    }
+                case "AboutClinic":
+                    {
+                        obj = new AboutClinicDAL();
+                        break;
+                    }   
 
             }
             Type controllerType = GetControllerType(requestContext, controllerName);
-            if (service != null)
+            if (obj != null)
             {
-                controller = Activator.CreateInstance(controllerType, new[] { service }) as Controller;
+                controller = Activator.CreateInstance(controllerType, new[] { obj }) as Controller;
             }
             else {
                 controller = Activator.CreateInstance(controllerType) as Controller;

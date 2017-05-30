@@ -188,6 +188,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AboutClinicController.cs" />
     <Compile Include="CustomControllerFactory.cs" />
     <Compile Include="Areas\Admin\Controllers\EmployeesController.cs" />
     <Compile Include="Areas\Admin\Controllers\HistoriesController.cs" />
@@ -300,6 +301,9 @@
     <Content Include="Areas\Admin\Views\Services\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Services\Index.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\AboutClinic\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AboutClinic\AddEditAboutClinic.cshtml" />
+    <Content Include="Areas\Admin\Views\AboutClinic\ClinicDetails.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\camera.js" />
     <Content Include="Scripts\device.min.js" />

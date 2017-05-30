@@ -1,0 +1,62 @@
+﻿
+@model IEnumerable<Models.AboutClinicModel>
+
+@{
+    ViewBag.Title = "About Clinic";
+}
+<p>  
+    @Html.ActionLink("Create New", "Create", "AboutClinic", new { area = "Admin" }, new { @class = "btn btn-default" })    
+</p>
+<table class="table" id="tblAboutClinic" style=" border:1px solid">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Short Desc</th>
+            <th>Long Desc</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortDesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LongDesc)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "ClinicDetails", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id, onclick = "return DeleteConfirm();" }, null)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+
+    $(document).ready(function () {
+        $('#tblAboutClinic').DataTable({
+            "columnDefs": [
+                { "width": "15%", "targets": 0 },
+                { "width": "25%", "targets": 1},
+                { "width": "45%", "targets": 2 },
+                { "width": "15%", "targets": 3 }
+            ]
+        });
+    });
+    function DeleteConfirm() {
+        debugger;
+        if (confirm("Are you sure want to delete record"))
+            return true;
+        else
+            return false;
+    }
+</script>

@@ -8,7 +8,7 @@ using System.Web;
 
 namespace DAL.Interface
 {
-    interface IAboutClinic
+    public interface IAboutClinic
     {
         int AddAbout(AboutClinicModel objAbout, HttpPostedFileBase file);
         int UpdateAbout(AboutClinicModel objAbout);
