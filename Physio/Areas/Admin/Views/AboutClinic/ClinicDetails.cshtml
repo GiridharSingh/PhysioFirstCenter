@@ -6,43 +6,51 @@
 }
 
 @{     
-    DateTime lastUpdate = Convert.ToDateTime(Model.UpdatedDate);    
+    DateTime lastUpdate = Convert.ToDateTime(Model.UpdatedDate);
+    DateTime CreatedDate = Convert.ToDateTime(Model.CreatedDate);
 }
-<h4> LineItem Details</h4>
+<script>
+    $(function () {
+        $("#btnDelete").click(function () {           
+            confirm('Are you sure you want to delete this item ?');            
+        });
 
+    });
+ </script>
+@*<h4>Item Details</h4>*@
 <div class="content indent">
     <!--content-->
     <div class="thumb-box14">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-8 form-group">
                     <h2 class="wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">@Html.DisplayFor(model => model.Name)</h2>
                     <div class="thumb-pad7 indent wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
                         <div class="box clearfix">
                             <div>
-                                    <strong>@lastUpdate.Day</strong>
-                                    <span>@lastUpdate.DayOfWeek @lastUpdate.Year</span>
-                                </div>
+                                <strong>@lastUpdate.Day</strong>
+                                <span>@lastUpdate.DayOfWeek @lastUpdate.Year</span>
+                            </div>
                             <hr>
                             <a href="#" class="lnk">
                                 <p> @Html.DisplayFor(model => model.ShortDesc) <p>
                             </a>
 
-                            @*<p>Posted by <a href="#">Admin</a> in <a href="#">General</a>  |  <a href="#">23 comments</a></p>*@
+                            <p>Posted by <a href="#">Admin</a>  Created <a href="#">@CreatedDate </a>  | Last Update <a href="#"> @lastUpdate </a></p>
                         </div>
                         <div class="thumbnail">
                             @*<figure><img src="~/Content/Images/page4_pic1.jpg" alt=""></figure>*@
                             <figure>
-                                    @{var imgSrc = "";
-                                      if (Model.Image != null)
-                                    {
-                                        var base64 = Convert.ToBase64String(Model.Image);
-                                        imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                                    }
-                                    <img src="@imgSrc" alt="" />
-                                    }
+                                @{var imgSrc = "";
+                                if (Model.Image != null)
+                                {
+                                    var base64 = Convert.ToBase64String(Model.Image);
+                                    imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                }
+                                <img src="@imgSrc" alt="" style="max-height:270px; max-width:270px" />
+                                }
 
-                                </figure>
+                            </figure>
 
                             <div class="caption">
                                 <div>
@@ -57,28 +65,41 @@
                     </div>
 
                 </div>
-                <div class="col-lg-4">
+
+                <div class="col-lg-4 form-group">
                     <div class="row">
                         @*<div class="col-lg-12 col-md-12 col-sm-6 col-xs-6 wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
-                                <h2>categories</h2>
-                                <ul class="list1-1">
-                                    <li><a href="#">Ultrices Posuere Cubilia Curae</a></li>
-                                    <li><a href="#">Suspendisse Sollicitudin Velit Sed Leo</a></li>
-                                    <li><a href="#">Ut Pharetra Augue Nec Augue</a></li>
-                                    <li><a href="#">Nam Elit Agna Endrerit Sit Amet</a></li>
-                                    <li><a href="#">Tincidunt Ac Viverra Sed Nulla</a></li>
-                                    <li><a href="#">Donec Porta Diam Eu Massa</a></li>
-                                    <li><a href="#">Quisque Diam Lorem Interdum Vitae</a></li>
-                                    <li><a href="#">Dapibus Ac Scelerisque Vitae Pede</a></li>
-                                </ul>
+                    <h2>categories</h2>
+                    <ul class="list1-1">
+                        <li><a href="#">Ultrices Posuere Cubilia Curae</a></li>
+                        <li><a href="#">Suspendisse Sollicitudin Velit Sed Leo</a></li>
+                        <li><a href="#">Ut Pharetra Augue Nec Augue</a></li>
+                        <li><a href="#">Nam Elit Agna Endrerit Sit Amet</a></li>
+                        <li><a href="#">Tincidunt Ac Viverra Sed Nulla</a></li>
+                        <li><a href="#">Donec Porta Diam Eu Massa</a></li>
+                        <li><a href="#">Quisque Diam Lorem Interdum Vitae</a></li>
+                        <li><a href="#">Dapibus Ac Scelerisque Vitae Pede</a></li>
+                    </ul>
 
-                            </div>*@
+                </div>*@
 
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+              
+                        @Html.ActionLink("Edit", "Edit", "AboutClinic", new { id = Model.Id, area = "Admin" }, new { @class = "btn btn-default" })
+
+                        @Html.ActionLink("Delete", "DeleteAbout", "AboutClinic", new { id = Model.Id, area = "Admin" }, new { @id = "btnDelete", @class = "btn btn-default" })
+
+                        @Html.ActionLink("Back to List", "Index", "AboutClinic", new { area = "Admin" }, new { @class = "btn btn-default" })
+                  
+                </div>
+            </div>
         </div>
     </div>
+    
 </div>
 
 

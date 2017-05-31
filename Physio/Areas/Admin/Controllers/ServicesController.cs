@@ -99,8 +99,8 @@ namespace Physio.Areas.Admin.Controllers
                 service.Image = target.ToArray();
             }
             else
-            {
-                var oldservice = db.Services.Where(m => m.ServiceId == service.ServiceId).FirstOrDefault();
+            {                
+                var oldservice = _IService.GetService(service.ServiceId);
                 service.Image = oldservice.Image;
             }
 

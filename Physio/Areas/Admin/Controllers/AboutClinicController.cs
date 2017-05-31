@@ -92,6 +92,19 @@ namespace Physio.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             return View(objAboutModel);
+        }       
+        public ActionResult DeleteAbout(long id)
+        {           
+            _IAboutClinic.DeleteAbout(id);
+            return RedirectToAction("Index");           
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
 
     }

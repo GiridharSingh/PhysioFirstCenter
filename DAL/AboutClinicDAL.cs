@@ -53,6 +53,7 @@ namespace DAL
             {
                 var objAbout = db.AboutClinics.Where(m => m.Id == AboutId).FirstOrDefault();
                 objAbout.IsActive = false;
+                objAbout.UpdatedDate = DateTime.Now.Date;
                 db.SaveChanges();
             }
         }

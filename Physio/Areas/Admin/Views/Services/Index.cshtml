@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Service List";    
 }
+<h4>Services</h4>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -11,6 +12,7 @@
         <tr>
             <th>ServiceName</th>
             <th>ShortDesc</th>
+            <th>Priority</th>
             <th>LongDesc</th>
             <th>Action</th>
         </tr>
@@ -24,6 +26,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ShortDesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Priority)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.LongDesc)
@@ -51,8 +56,7 @@
             ]
         });
     });
-    function DeleteConfirm() {
-        debugger;
+    function DeleteConfirm() {     
         if (confirm("Are you sure want to delete record"))
             return true;
         else

@@ -1876,6 +1876,21 @@ footer .col-lg-3.indent:after {
 }
 }
 /*===========================================================================================================================*/
+ #dvPreview {
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);
+        max-height: 300px;
+        max-width: 300px;
+        min-height: 200px;
+        min-width: 200px;
+        display: block;
+        border: 1px;
+    }
+
+#dvPreview img {
+    max-height: 300px;
+    max-width: 300px;
+}
+/*===========================================================================================================================*/
 @media (max-width: 626px) {
  .thumb-pad4 figure {
  margin: 0 0 20px 0;

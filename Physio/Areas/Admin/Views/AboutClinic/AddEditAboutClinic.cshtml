@@ -4,22 +4,6 @@
     Layout = "~/Views/Shared/Admin_Layout.cshtml";
 }
 
-<style type="text/css">
-    #dvPreview {
-        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);
-        max-height: 200px;
-        max-width: 200px;
-        min-height: 200px;
-        min-width: 200px;
-        display: block;
-        border: 1px;
-    }
-
-        #dvPreview img {
-            max-height: 200px;
-            max-width: 200px;
-        }
-</style>
 <h4>Add/Update About Clinic</h4>
 <script>
     $(function () {
@@ -41,9 +25,10 @@
             toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons'
 
         });
-        tinyMCE.activeEditor.setContent();
+        //tinyMCE.activeEditor.setContent();
 
         $("#fileupload").change(function () {
+            debugger;
             $("#dvPreview").html("");
             var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
             if (regex.test($(this).val().toLowerCase())) {
@@ -51,13 +36,16 @@
                 $("#dvPreview").append("<img />");
                 var reader = new FileReader();
                 reader.onload = function (e) {
+                    debugger;
                     $("#dvPreview img").attr("src", e.target.result);
+                    //$("#dvPreview img").attr("style", "height:300px; width:300px");
                 }
                 reader.readAsDataURL($(this)[0].files[0]);
             } else {
                 alert("Please upload a valid image file.");
             }
         });
+
         $("#frmAddEditAboutClinic").validate({
 
             // Specify the validation rules
@@ -89,15 +77,22 @@
                            new SelectListItem { Text = "Medium", Value = "2"},
                            new SelectListItem { Text = "Low", Value = "3"}
                            };
-        }
-        @using (Html.BeginForm("AddEdit", "AboutClinic", FormMethod.Post, new { id = "frmAddEditAboutClinic", enctype = "multipart/form-data" }))
+                           
+    var imgSrc = "";
+    if (Model.Image != null)
+    {
+        var base64 = Convert.ToBase64String(Model.Image);
+        imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+    }                        
+}
+@using (Html.BeginForm("AddEdit", "AboutClinic", FormMethod.Post, new { id = "frmAddEditAboutClinic", enctype = "multipart/form-data" }))
 {
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <div class="form-group">
                             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
@@ -140,33 +135,20 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
 
                         <div class="form-group">
                             @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
                                 <input id="fileupload" type="file" name="file" />
-                                <div id="dvPreview">
-                                    @{
-                                var imgSrc = "";
-                                if (Model.Image != null)
-                                {
-                                    var base64 = Convert.ToBase64String(Model.Image);
-                                    imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                <div id="dvPreview">                                   
                                     <img src="@imgSrc" />
-                                }
-                                    }
-
-                                </div>
-
+                                </div>                                
                             </div>
                         </div>
                     </div>
 
                 </div>
-
-
-
 
             </div>
 

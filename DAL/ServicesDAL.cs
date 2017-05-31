@@ -43,8 +43,6 @@ namespace DAL
                     
                 }
             }
-
-
         }
 
         public void DeleteService(long ServiceId)
@@ -53,6 +51,7 @@ namespace DAL
             {
                 var service = db.Services.Where(m => m.ServiceId == ServiceId).FirstOrDefault();
                 service.IsActive = false;
+                service.UpdatedDate = DateTime.Now.Date;
                 db.SaveChanges();
             }
         }

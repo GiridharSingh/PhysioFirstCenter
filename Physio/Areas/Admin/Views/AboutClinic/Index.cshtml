@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = "About Clinic";
 }
+<h4>About Clinic</h4>
 <p>  
     @Html.ActionLink("Create New", "Create", "AboutClinic", new { area = "Admin" }, new { @class = "btn btn-default" })    
 </p>
@@ -12,6 +13,7 @@
         <tr>
             <th>Title</th>
             <th>Short Desc</th>
+            <th>Priority</th>
             <th>Long Desc</th>
             <th>Action</th>
         </tr>
@@ -27,13 +29,16 @@
                     @Html.DisplayFor(modelItem => item.ShortDesc)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Priority)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.LongDesc)
                 </td>
 
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                     @Html.ActionLink("Details", "ClinicDetails", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id, onclick = "return DeleteConfirm();" }, null)
+                    @Html.ActionLink("Delete", "ClinicDetails", new { id = item.Id })
                 </td>
             </tr>
         }
@@ -51,12 +56,5 @@
                 { "width": "15%", "targets": 3 }
             ]
         });
-    });
-    function DeleteConfirm() {
-        debugger;
-        if (confirm("Are you sure want to delete record"))
-            return true;
-        else
-            return false;
-    }
+    });    
 </script>

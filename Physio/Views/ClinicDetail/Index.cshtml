@@ -26,18 +26,18 @@
                             @*<p>Posted by <a href="#">Admin</a> in <a href="#">General</a>  |  <a href="#">23 comments</a></p>*@
                         </div>
                         <div class="thumbnail">
-                            <figure><img src="~/Content/Images/page4_pic1.jpg" alt=""></figure>
-                            @*<figure>
-                                    @{var imgSrc = "";
-                                      if (Model.Image != null)
-                                    {
-                                        var base64 = Convert.ToBase64String(Model.Image);
-                                        imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                                    }
-                                    <img src="@imgSrc" alt="" />
-                                    }
+                            @*<figure><img src="~/Content/Images/page4_pic1.jpg" alt=""></figure>*@
+                            <figure>
+                                @{var imgSrc = "";
+                                if (Model.Image != null)
+                                {
+                                    var base64 = Convert.ToBase64String(Model.Image);
+                                    imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                }
+                                <img src="@imgSrc" alt="" style="max-height:270px; max-width:270px" />
+                                }
 
-                                </figure>*@
+                            </figure>
 
                             <div class="caption">
                                 <div>
@@ -67,7 +67,7 @@
                                     <li><a href="#">Dapibus Ac Scelerisque Vitae Pede</a></li>
                                 </ul>
 
-                            </div>*@                        
+                            </div>*@
 
                     </div>
                 </div>
