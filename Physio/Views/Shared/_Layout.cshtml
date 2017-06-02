@@ -150,7 +150,7 @@
             </div>
         </div>
     </div>*@
-    <div class="container body-content">
+    
         @RenderBody()
         @*<hr />*@
         <footer>
@@ -200,20 +200,11 @@
                 </div>
             </div>
         </footer>
-    </div>
+   
 
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/footerJSCollect")
     @RenderSection("scripts", required: false)
-
-    @*<script src="~/Scripts/bootstrap.min.js"></script>
-        <script src="~/Scripts/device.min.js"></script>
-        <script src="~/Scripts/tmstickup.js"></script>
-        <script src="~/Scripts/superfish.js"></script>
-        <script src="~/Scripts/jquery.mousewheel.min.js"></script>
-        <script src="~/Scripts/jquery.simplr.smoothscroll.min.js"></script>
-        <script src="~/Scripts/jquery.stellar.js"></script>
-        <script src="~/Scripts/jquery.ui.totop.js"></script>*@
     <a href="#" id="toTop" class="fa fa-arrow-circle-o-up"></a>
 </body>
 </html>

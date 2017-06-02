@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
-    
+
 }
 <script>
     $(function () {
@@ -25,118 +25,120 @@
 
         });
 
-    $("#fileupload").change(function () {
-        $("#dvPreview").html("");
-        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
-        if (regex.test($(this).val().toLowerCase())) {
-            $("#dvPreview").show();
-            $("#dvPreview").append("<img />");
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $("#dvPreview img").attr("src", e.target.result);
+        $("#fileupload").change(function () {
+            $("#dvPreview").html("");
+            var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+            if (regex.test($(this).val().toLowerCase())) {
+                $("#dvPreview").show();
+                $("#dvPreview").append("<img />");
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#dvPreview img").attr("src", e.target.result);
+                }
+                reader.readAsDataURL($(this)[0].files[0]);
+            } else {
+                alert("Please upload a valid image file.");
             }
-            reader.readAsDataURL($(this)[0].files[0]);
-        } else {
-            alert("Please upload a valid image file.");
-        }
-    });
-    $("#frmcreateService").validate({
+        });
+        $("#frmcreateService").validate({
 
-        // Specify the validation rules
-        rules: {
-            ServiceName: "required",
-            ShortDesc: "required",
-            LongDesc:"required"
-        },
+            // Specify the validation rules
+            rules: {
+                ServiceName: "required",
+                ShortDesc: "required",
+                LongDesc: "required"
+            },
 
-        // Specify the validation error messages
-        messages: {
-            ServiceName: "Please enter service name",
-            ShortDesc: "Please enter short description",
-            LongDesc: "Please enter long description",
-        },
+            // Specify the validation error messages
+            messages: {
+                ServiceName: "Please enter service name",
+                ShortDesc: "Please enter short description",
+                LongDesc: "Please enter long description",
+            },
 
-        submitHandler: function (form) {
-            form.submit();
-        }
+            submitHandler: function (form) {
+                form.submit();
+            }
+        });
+        $("#ServicePriority").change(function () {
+            $('.hdnPriority').val($("#ServicePriority option:selected").val());
+        });
+
     });
-    $("#ServicePriority").change(function () {
-        $('.hdnPriority').val($("#ServicePriority option:selected").val());
-    });
-    
-});
 </script>
-<h4>Add New Service</h4>
-@using (Html.BeginForm("Create", "Services", FormMethod.Post, new { id="frmcreateService", enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<div class="content indent">
+    <div class="container">
+        <h4>Add New Service</h4>
         <div class="row">
-            <div class="col-md-8">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ServiceName, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.ServiceName, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ServiceName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+            @using (Html.BeginForm("Create", "Services", FormMethod.Post, new { id = "frmcreateService", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ServiceName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.ServiceName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ServiceName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ShortDesc, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.TextAreaFor(model => model.ShortDesc, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ShortDesc, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ShortDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(model => model.ShortDesc, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ShortDesc, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.LongDesc, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <!-- This will contain your HtmlContent and use the TinyMCE editor-->
-                        @Html.TextAreaFor(model => model.LongDesc, new { @id = "tinyMCETextarea" })                        
-                        @Html.ValidationMessageFor(model => model.LongDesc, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Priority, htmlAttributes: new { @class = "control-label col-md-2" })
-                    @Html.HiddenFor(model => model.Priority, htmlAttributes: new { @class = "hdnPriority" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("ServicePriority", new List<SelectListItem>                  
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.LongDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <!-- This will contain your HtmlContent and use the TinyMCE editor-->
+                                    @Html.TextAreaFor(model => model.LongDesc, new { @id = "tinyMCETextarea" })
+                                    @Html.ValidationMessageFor(model => model.LongDesc, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Priority, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.HiddenFor(model => model.Priority, htmlAttributes: new { @class = "hdnPriority" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("ServicePriority", new List<SelectListItem>
                          { new SelectListItem { Text = "High", Value = "1"},
                            new SelectListItem { Text = "Medium", Value = "2", Selected=true},
                            new SelectListItem { Text = "Low", Value = "3"}
                            }, new { @class = "form-control"})
-                        
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-default" />
-                        @Html.ActionLink("Back", "Index", "Services", new { area = "Admin" }, new { @class = "btn btn-default" })                        
-                    </div>
-                </div>
-               
-            </div>
-           
-            <div class="col-md-4">
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <input id="fileupload" type="file" name="file" />
-                        <div id="dvPreview" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Save" class="btn btn-default" />
+                                    @Html.ActionLink("Back", "Index", "Services", new { area = "Admin" }, new { @class = "btn btn-default" })
+                                </div>
+                            </div>
+
                         </div>
+
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <input id="fileupload" type="file" name="file" />
+                                    <div id="dvPreview">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </div>
 
-        </div>
+            }
+          </div>
     </div>
-    
-}
-
-@*@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}*@
+</div>
