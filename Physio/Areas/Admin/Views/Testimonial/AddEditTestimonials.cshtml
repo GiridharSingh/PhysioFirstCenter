@@ -1,7 +1,8 @@
-﻿@model Models.AboutClinicModel
+﻿
+@model Models.TestimonialsModel
 @{
-    ViewBag.Title = "Add/Edit AboutClinic";
-    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+    ViewBag.Title = "AddEditTestimonials";
+    //Layout = "~/Views/Shared/Admin_Layout.cshtml";
 }
 <script>
     $(function () {
@@ -44,20 +45,20 @@
             }
         });
 
-        $("#frmAddEditAboutClinic").validate({
+        $("#frmAddEditTestimonials").validate({
 
             // Specify the validation rules
             rules: {
-                Name: "required",
-                ShortDesc: "required",
-                LongDesc: "required"
+                PatientName: "required",
+                PatientDesignation: "required",
+                PatientExperience: "required"
             },
 
             // Specify the validation error messages
             messages: {
-                Name: "Please enter name",
-                ShortDesc: "Please enter short description",
-                LongDesc: "Please enter long description",
+                PatientName: "Please enter  name",
+                PatientDesignation: "Please enter Designation",
+                PatientExperience: "Please enter Experience",
             },
 
             submitHandler: function (form) {
@@ -69,25 +70,17 @@
 </script>
 <div class="content indent">
     <div class="container">
-        <h4>Add/Update About Clinic</h4>
+        <h4>Add/Update Testimonials</h4>
         <div class="row">
-            @{  List<SelectListItem> listItems = new List<SelectListItem>();
-              listItems = new List<SelectListItem>
-
-                         { new SelectListItem{Text="-- Select Priority --",Value="0"},
-                             new SelectListItem { Text = "High", Value = "1"},
-                           new SelectListItem { Text = "Medium", Value = "2"},
-                           new SelectListItem { Text = "Low", Value = "3"}
-                           };
-
+            @{  
               var imgSrc = "";
-              if (Model.Image != null)
+              if (Model.PatientImage != null)
               {
-                  var base64 = Convert.ToBase64String(Model.Image);
+                  var base64 = Convert.ToBase64String(Model.PatientImage);
                   imgSrc = String.Format("data:image/gif;base64,{0}", base64);
               }
             }
-            @using (Html.BeginForm("AddEdit", "AboutClinic", FormMethod.Post, new { id = "frmAddEditAboutClinic", enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("AddEdit", "Testimonial", FormMethod.Post, new { id = "frmAddEditTestimonials", enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
 
@@ -96,51 +89,44 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="form-group">
-                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.PatientName, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
                                     @Html.HiddenFor(model => model.Id)
-                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.PatientName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PatientName, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.ShortDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.PatientDesignation, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.TextAreaFor(model => model.ShortDesc, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.ShortDesc, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.PatientDesignation, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PatientDesignation, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.LongDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.PatientExperience, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
                                     <!-- This will contain your HtmlContent and use the TinyMCE editor-->
-                                    @Html.TextAreaFor(model => model.LongDesc, new { @id = "tinyMCETextarea" })
+                                    @Html.TextAreaFor(model => model.PatientExperience, new { @id = "tinyMCETextarea" })
                                     @Html.HiddenFor(model => model.IsActive)
-                                    @Html.ValidationMessageFor(model => model.LongDesc, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(model => model.PatientExperience, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Priority, htmlAttributes: new { @class = "control-label col-md-2" })
-                                @Html.HiddenFor(model => model.Priority, htmlAttributes: new { @class = "hdnPriority" })
-                                <div class="col-md-10">
-                                    @Html.DropDownListFor(model => model.Priority, new SelectList(listItems, "Value", "Text"), new { @class = "form-control" })
-
-                                </div>
-                            </div>
-                            <div class="form-group">
+                            
+                            @*<div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
                                     <input type="submit" value="Save" class="btn btn-default" />
-                                    @Html.ActionLink("Back", "Index", "AboutClinic", new { area = "Admin" }, new { @class = "btn btn-default" })
+                                    @Html.ActionLink("Back", "ShowTestimonials", "Testimonial", new { area = "Admin" }, new { @class = "btn btn-default" })
                                 </div>
-                            </div>
+                            </div>*@
                         </div>
 
                         <div class="col-md-4">
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.PatientImage, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
                                     <input id="fileupload" type="file" name="file" />
                                     <div id="dvPreview">
@@ -151,13 +137,20 @@
                         </div>
 
                     </div>
-
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                            @Html.ActionLink("Back", "ShowTestimonials", "Testimonial", new { area = "Admin" }, new { @class = "btn btn-default" })
+                        </div>
+                    </div>
                 </div>
 
             }
         </div>
     </div>
 </div>
+
+
 
 
 

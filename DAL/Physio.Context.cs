@@ -30,5 +30,6 @@ namespace DAL
         public virtual DbSet<Appointment> Appointments { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<AboutClinic> AboutClinics { get; set; }
+        public virtual DbSet<Testimonial> Testimonials { get; set; }
     }
 }

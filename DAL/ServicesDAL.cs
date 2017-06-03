@@ -1,5 +1,4 @@
-﻿using DAL.Interface;
-using Models;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using DAL.Interface;
+using Models;
 
 namespace DAL
 {
@@ -102,6 +103,7 @@ namespace DAL
                 catch (Exception ex)
                 {
                     return 0;
+                    throw ex;
                 }
             }
         }

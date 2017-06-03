@@ -92,6 +92,21 @@
           <Property Name="UpdatedDate" Type="datetime" />
           <Property Name="UpdatedBy" Type="bigint" />
         </EntityType>
+        <EntityType Name="Testimonials">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientName" Type="varchar" MaxLength="100" />
+          <Property Name="PatientDesignation" Type="varchar" MaxLength="100" />
+          <Property Name="PatientExperience" Type="varchar(max)" />
+          <Property Name="PatientImage" Type="varbinary(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="bigint" />
+        </EntityType>
         <Association Name="FK_Appointment_Services">
           <End Role="Services" Type="Self.Services" Multiplicity="0..1" />
           <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
@@ -110,6 +125,7 @@
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Testimonials" EntityType="Self.Testimonials" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Appointment_Services" Association="Self.FK_Appointment_Services">
             <End Role="Services" EntitySet="Services" />
             <End Role="Appointment" EntitySet="Appointment" />
@@ -143,6 +159,7 @@
           </AssociationSet>
           <EntitySet Name="Employees" EntityType="PhysioDevModel.Employee" />
           <EntitySet Name="AboutClinics" EntityType="PhysioDevModel.AboutClinic" />
+          <EntitySet Name="Testimonials" EntityType="PhysioDevModel.Testimonial" />
         </EntityContainer>
         <EntityType Name="Service">
           <Key>
@@ -225,6 +242,21 @@
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Priority" Type="Int32" />
           <Property Name="BannerImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Testimonial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PatientDesignation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PatientExperience" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PatientImage" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="CreatedBy" Type="Int64" />
@@ -325,6 +357,22 @@
                 <ScalarProperty Name="LongDesc" ColumnName="LongDesc" />
                 <ScalarProperty Name="ShortDesc" ColumnName="ShortDesc" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Testimonials">
+            <EntityTypeMapping TypeName="PhysioDevModel.Testimonial">
+              <MappingFragment StoreEntitySet="Testimonials">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PatientImage" ColumnName="PatientImage" />
+                <ScalarProperty Name="PatientExperience" ColumnName="PatientExperience" />
+                <ScalarProperty Name="PatientDesignation" ColumnName="PatientDesignation" />
+                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

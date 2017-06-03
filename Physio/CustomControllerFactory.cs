@@ -38,7 +38,12 @@ namespace Physio
                     {
                         obj = new AboutClinicDAL();
                         break;
-                    }   
+                    }
+                case "Testimonial":
+                    {
+                        obj = new TestimonialsDAL();
+                        break;
+                    } 
 
             }
             Type controllerType = GetControllerType(requestContext, controllerName);
