@@ -1,0 +1,65 @@
+﻿@model Models.TestimonialsModel
+
+@{
+    ViewBag.Title = "TestimonialDetails";
+    //Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+<script>
+    $(function () {
+        $("#btnDelete").click(function () {
+            confirm('Are you sure you want to delete this item ?');
+        });
+
+    });
+</script>
+@*<h4>Item Details</h4>*@
+<div class="content indent">
+    <!--content-->
+    <div class="thumb-box">
+        <div class="container">                        
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12 wow fadeInUp animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <h2>Testimonials</h2>                   
+                        <div class="thumb-pad5">
+                        <div class="thumbnail">
+                            <figure>
+                                @{var imgSrc = "";
+                                    if (Model.PatientImage != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(Model.PatientImage);
+                                        imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                    }
+                                    <img src="@imgSrc" class="img-thumbnail" alt="" style="max-height:270px; max-width:270px" />
+                                }
+
+                            </figure>
+                            <div class="caption">
+                                <div>
+                                    @{ var description = Model.PatientExperience;
+                                        @Html.Raw(description)
+                                    }
+                                </div>
+                                <div>
+                                    <a href="#">@Model.PatientName</a>
+                                    <p>@Model.PatientDesignation</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>               
+                
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp animated">
+                    @Html.ActionLink("Edit", "Edit", "Testimonial", new { id = Model.Id, area = "Admin" }, new { @class = "btn btn-default" })
+
+                    @Html.ActionLink("Delete", "DeleteTestimonial", "Testimonial", new { id = Model.Id, area = "Admin" }, new { @id = "btnDelete", @class = "btn btn-default" })
+
+                    @Html.ActionLink("Back to List", "ShowTestimonials", "Testimonial", new { area = "Admin" }, new { @class = "btn btn-default" })
+                </div>
+            </div>            
+         </div>      
+        
+    </div>
+
+</div>

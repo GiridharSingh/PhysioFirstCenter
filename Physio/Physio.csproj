@@ -277,6 +277,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Areas\Admin\Views\Testimonial\ShowTestimonials.cshtml" />
     <Content Include="Areas\Admin\Views\Testimonial\AddEditTestimonials.cshtml" />
+    <Content Include="Areas\Admin\Views\Testimonial\TestimonialDetails.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\camera.js" />
     <Content Include="Scripts\device.min.js" />

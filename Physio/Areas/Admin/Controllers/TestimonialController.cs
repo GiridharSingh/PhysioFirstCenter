@@ -52,7 +52,7 @@ namespace Physio.Areas.Admin.Controllers
         public ActionResult AddEdit([Bind(Include = "Id,PatientName,PatientDesignation,PatientExperience,IsActive")] TestimonialsModel objTestimonialsModel, HttpPostedFileBase file)
         {
             int retvalue = 0;
-            if (objTestimonialsModel.Id == 0 || objTestimonialsModel.Id == null) // Add About Clinic to system.
+            if (objTestimonialsModel.Id == 0) // Add About Clinic to system.
             {
                 retvalue = _ITestimonials.AddTestimonial(objTestimonialsModel, file);
 
@@ -80,31 +80,31 @@ namespace Physio.Areas.Admin.Controllers
             return View(objTestimonialsModel);
         }
         //Need To modify according to Testimonial
-        //public ActionResult ClinicDetails(long? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    var objAboutModel = _IAboutClinic.GetAbout(id);
-        //    if (objAboutModel == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(objAboutModel);
-        //}
-        //public ActionResult DeleteAbout(long id)
-        //{
-        //    _IAboutClinic.DeleteAbout(id);
-        //    return RedirectToAction("Index");
-        //}
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
+        public ActionResult TestimonialDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var objTestimonialsModel = _ITestimonials.GetTestimonial(id);
+            if (objTestimonialsModel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(objTestimonialsModel);
+        }
+        public ActionResult DeleteTestimonial(int id)
+        {
+            _ITestimonials.DeleteTestimonial(id);
+            return RedirectToAction("ShowTestimonials");
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
 
 
