@@ -18,7 +18,8 @@ namespace DAL
             {
                 History objHistory = new History();
                 objHistory.IsActive = true;
-                objHistory.CreatedDate = DateTime.Now;
+                objHistory.CreatedDate = DateTime.Now.Date;
+                objHistory.UpdatedDate = DateTime.Now.Date;
                 MapProperties.CopyProperties(history, objHistory);
                 db.Histories.Add(objHistory);
                 db.SaveChanges();
@@ -55,7 +56,7 @@ namespace DAL
             }
             return lstallhistories;
         }
-
+        
         public HistoryModel GetService(long? historyId)
         {
             HistoryModel objhistory = new HistoryModel();

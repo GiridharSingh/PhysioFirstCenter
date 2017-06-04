@@ -79,11 +79,12 @@
                 <div class="collapse navbar-collapse" id="example-navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("About us", "About", "Home")</li>
                         <li class="dropdown">
                             @Html.ActionLink("Services", "Services", "Home")
                         </li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Testimonials", "Index", "TestimonialClient")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li> 
                     </ul>
                     @*@Html.Partial("_LoginPartial")*@
                 </div>

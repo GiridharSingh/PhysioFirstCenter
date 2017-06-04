@@ -1,4 +1,4 @@
-﻿@model Models.ViewModel.AboutViewModel
+﻿@model Physio.Models.AboutViewModel
 @{
     ViewBag.Title = "About";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -25,9 +25,9 @@
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp animated" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                     <h2>Our History</h2>
-                    
-                        @Html.Partial("_History",Model.lstHistory)
-                   
+
+                    @Html.Partial("_History", Model.lstHistory)
+
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12 wow fadeInUp animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                     <h2>information for patients</h2>
@@ -87,56 +87,43 @@
     <div class="thumb-box9">
         <div class="container">
             <h2 class="wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">Our Staff</h2>
-           @Html.Partial("_Staff", Model.lstEmployees)
+            @Html.Partial("_Staff", Model.lstEmployee)
         </div>
     </div>
     <div class="thumb-box10">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
-                    <h2>Our Standards</h2>
-                    <ul class="list7">
-                        <li>
-                            <span class="fa fa-heart"></span>
-                            <div class="extra-wrap">
-                                <h3>Duis sem est viverra eu interdum ac suscipit nec mauris Suspendisse</h3>
-                                <p>Mauris fermentum tortor non enim aliquet condimentum. Nam aliquam pretium feugiat.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="fa fa-stethoscope"></span>
-                            <div class="extra-wrap">
-                                <h3>mauris Suspendisse commodo tempor sagittis In justo est</h3>
-                                <p>Duis sem est, viverra eu interdum ac, suscipit nec mauris. Suspendisse commodo tempor sagittis!</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp animated" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                    <h2>Our Principles</h2>
-                    <p>Suspendisse commodo tempor sagittis! In justo est, sollicitudin eu scelerisque pretium, placerat eget elit. Praesent faucibus rutrum odio at rhoncus. Pellentesque vitae tortor id neque fermentum.</p>
-                    <ul class="list1-1">
-                        <li><a href="#">Etiam Cursus Leo Vel Metus</a></li>
-                        <li><a href="#">Nulla Facilisi Aenean Nec Eros</a></li>
-                        <li><a href="#">Vestibulum Ante Ipsum Primis</a></li>
-                        <li><a href="#">In Faucibus Orci Luctus Et</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-5 col-md-12 col-sm-12 wow fadeInUp animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                    <h2>Testimonials</h2>
-                    <div class="thumb-pad5">
-                        <div class="thumbnail">
-                            <figure><img src="~/Content/Images/page2_pic6.jpg" alt=""></figure>
-                            <div class="caption">
-                                <p>Praesent faucibus rutrum odio at rhoncus. Pellentesque vitae tortor id neque fermentum pretium. Maecenas ac lacus ut neque rhoncus laoreet sed id tellus. Donec justo tellus, tincidunt vitae pellentesque nec, pharetra a orci.</p>
-                                <div>
-                                    <a href="#">Helen Smith</a>
-                                    <p>Sollicitudin scelerisque</p>
+                <h2>Testimonials</h2>
+                @foreach (var item in Model.lstTestimonial)
+                {
+                    <div class="col-lg-6 col-md-12 col-sm-12 wow fadeInUp animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+
+                        <div class="thumb-pad5">
+                            <div class="thumbnail">
+                                <figure>
+                                    @{var imgSrc = "";
+                                        if (item.PatientImage != null)
+                                        {
+                                            var base64 = Convert.ToBase64String(item.PatientImage);
+                                            imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                        }
+                                        <img src="@imgSrc" class="img-thumbnail" alt="" style="max-height:270px; max-width:270px" />
+                                    }
+
+                                </figure>
+                                <div class="caption">
+                                    @{ var description = item.PatientExperience;
+                                        @Html.Raw(description)
+                                    }
+                                    <div>
+                                        <a href="#">@item.PatientName</a>
+                                        <p>@item.PatientDesignation</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
             </div>
         </div>
     </div>

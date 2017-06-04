@@ -7,7 +7,7 @@
 <script>
     $(function () {
         $("#btnDelete").click(function () {
-            confirm('Are you sure you want to delete this item ?');
+            return confirm('Are you sure you want to delete this item ?');
         });
 
     });
@@ -33,12 +33,10 @@
                                 }
 
                             </figure>
-                            <div class="caption">
-                                <div>
+                            <div class="caption">                                                               
                                     @{ var description = Model.PatientExperience;
                                         @Html.Raw(description)
-                                    }
-                                </div>
+                                    }                                
                                 <div>
                                     <a href="#">@Model.PatientName</a>
                                     <p>@Model.PatientDesignation</p>

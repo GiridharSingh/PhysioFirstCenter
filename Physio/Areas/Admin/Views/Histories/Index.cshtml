@@ -2,52 +2,50 @@
 
 @{
     ViewBag.Title = "Index";
-   
-  }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table" id="tblHistory">
-    <thead>
-        <tr>
-            <th>
-               Year
-            </th>
-            <th>
-               Short Description
-            </th>
-            <th>
-              Long Description
-            </th>
-            <th>
-                Action
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HistoryYear)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ShortDesc)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LongDesc)
-                </td>
+}
+<div class="content indent">
+    <div class="container">
+        <h4>Histories</h4>
+        <div class="row">
+            <p>
+                @Html.ActionLink("Create New", "Create", "Histories", new { area = "Admin" }, new { @class = "btn btn-default" })
+            </p>
+            <table class="table" id="tblHistory">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Title</th>
+                        <th>Long Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HistoryYear)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ShortDesc)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LongDesc)
+                            </td>
 
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.HistoryId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.HistoryId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.HistoryId })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.HistoryId }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.HistoryId }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.HistoryId })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 <script>
 
     $(document).ready(function () {

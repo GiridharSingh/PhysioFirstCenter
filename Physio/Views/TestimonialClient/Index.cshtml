@@ -1,0 +1,49 @@
+﻿
+@model IEnumerable<Models.TestimonialsModel>
+@{
+    ViewBag.Title = "Services";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<title>Testimonials</title>
+<div class="content indent">
+    <!--content-->
+    <div class="thumb-box">
+        <div class="container">
+             <div class="row">
+                <h2>Testimonials</h2>
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-10 col-md-12 col-sm-12 wow fadeInUp animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+
+                        <div class="thumb-pad5">
+                            <div class="thumbnail">
+                                <figure>
+                                    @{var imgSrc = "";
+                                        if (item.PatientImage != null)
+                                        {
+                                            var base64 = Convert.ToBase64String(item.PatientImage);
+                                            imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                        }
+                                        <img src="@imgSrc" class="img-thumbnail" alt="" style="max-height:200px; max-width:200px" />
+                                    }
+
+                                </figure>
+                                <div class="caption">
+                                    @{ var description = item.PatientExperience;
+                                        @Html.Raw(description)
+                                    }
+                                    <div>
+                                        <a href="#">@item.PatientName</a>
+                                        <p>@item.PatientDesignation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        }
+            </div>
+        </div>
+
+    </div>
+
+</div>
