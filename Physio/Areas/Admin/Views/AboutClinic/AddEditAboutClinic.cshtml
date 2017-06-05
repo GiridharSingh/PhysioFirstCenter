@@ -1,6 +1,6 @@
 ﻿@model Models.AboutClinicModel
 @{
-    ViewBag.Title = "Add/Edit AboutClinic";
+    ViewBag.Title = "Add/Edit";
     Layout = "~/Views/Shared/Admin_Layout.cshtml";
 }
 <script>
@@ -11,19 +11,17 @@
             selector: '#tinyMCETextarea',
             //mode: "textareas",
             theme: "modern",
-            theme: 'modern',
-            width: 600,
+            //width: 600,
             height: 300,
             plugins: [
               'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
               'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
               'save table contextmenu directionality emoticons template paste textcolor'
             ],
-            //content_css: 'css/content.css',
+            content_css: "/scripts/tinymce/skins/lightgray/content.min.css",
             toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons'
 
-        });
-        //tinyMCE.activeEditor.setContent();
+        });        
 
         $("#fileupload").change(function () {
             debugger;

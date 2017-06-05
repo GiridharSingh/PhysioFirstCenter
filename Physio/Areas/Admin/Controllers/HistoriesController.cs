@@ -85,7 +85,7 @@ namespace Physio.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HistoryId,HistoryYear,ShortDesc,LongDesc,IsActive,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy")] History history)
+        public ActionResult Edit([Bind(Include = "HistoryId,HistoryYear,ShortDesc,LongDesc,IsActive")] History history)
         {
             if (ModelState.IsValid)
             {
