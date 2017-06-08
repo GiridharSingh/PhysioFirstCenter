@@ -9,25 +9,32 @@ using System.Data.Entity;
 
 namespace DAL
 {
-    public class HistoryDAL: IHistory
+    public class HistoryDAL : IHistory
     {
         private PhysioDevEntities db = new PhysioDevEntities();
+
         public int CreateHistory(HistoryModel history)
         {
-            try
+            //History objHistory = new History();
+            history.IsActive = true;
+            history.CreatedDate = DateTime.Now.Date;
+            history.UpdatedDate = DateTime.Now.Date;
+
+            using (PhysioDevEntities db = new PhysioDevEntities())
             {
-                History objHistory = new History();
-                objHistory.IsActive = true;
-                objHistory.CreatedDate = DateTime.Now.Date;
-                objHistory.UpdatedDate = DateTime.Now.Date;
-                MapProperties.CopyProperties(history, objHistory);
-                db.Histories.Add(objHistory);
-                db.SaveChanges();
-                return 1;
-            }
-            catch (Exception ex)
-            {
-                return 0;
+                try
+                {
+                    History obj = new History();
+                    history.CopyProperties(obj);
+                    db.Histories.Add(obj);
+                    db.SaveChanges();
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                    throw ex;
+                }
             }
         }
 
@@ -37,13 +44,14 @@ namespace DAL
             {
                 var history = db.Histories.Where(m => m.HistoryId == historyId).FirstOrDefault();
                 history.IsActive = false;
+                history.UpdatedDate = DateTime.Now.Date;
                 db.SaveChanges();
             }
         }
 
         public List<HistoryModel> GetAllHistories()
         {
-            List<HistoryModel> lstallhistories = new List<HistoryModel>();
+            List<HistoryModel> lstalllhistory = new List<HistoryModel>();
             using (PhysioDevEntities db = new PhysioDevEntities())
             {
                 var lsthistories = db.Histories.Where(m => m.IsActive == true).OrderByDescending(m => m.HistoryId).ToList();
@@ -51,30 +59,31 @@ namespace DAL
                 {
                     HistoryModel objhistory = new HistoryModel();
                     history.CopyProperties(objhistory);
-                    lstallhistories.Add(objhistory);
+                    lstalllhistory.Add(objhistory);
                 }
             }
-            return lstallhistories;
+            return lstalllhistory;
         }
-        
-        public HistoryModel GetService(long? historyId)
+
+        public HistoryModel GetHistory(long? historyId)
         {
             HistoryModel objhistory = new HistoryModel();
-            using (PhysioDevEntities db = new PhysioDevEntities())
+            if (historyId != null)
             {
-                var service = db.Histories.Where(m => m.HistoryId == historyId).FirstOrDefault();
-                service.CopyProperties(objhistory);
+                using (PhysioDevEntities db = new PhysioDevEntities())
+                {
+                    var Histor = db.Histories.Where(m => m.HistoryId == historyId).FirstOrDefault();
+                    Histor.CopyProperties(objhistory);
+                }
             }
             return objhistory;
         }
 
-        public int UpdateService(HistoryModel objHistory)
+        public int UpdateHistory(HistoryModel objHistory)
         {
             using (PhysioDevEntities db = new PhysioDevEntities())
             {
-
                 objHistory.UpdatedDate = DateTime.Now.Date;
-
                 try
                 {
                     History history = new History();
@@ -86,8 +95,10 @@ namespace DAL
                 catch (Exception ex)
                 {
                     return 0;
+                    throw ex;
                 }
             }
         }
+
     }
 }

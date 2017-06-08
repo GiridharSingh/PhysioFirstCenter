@@ -10,8 +10,8 @@ namespace DAL.Interface
    public interface IHistory
     {
         int CreateHistory(HistoryModel history);
-        int UpdateService(HistoryModel objHistory);
-        HistoryModel GetService(long? historyId);
+        int UpdateHistory(HistoryModel objHistory);
+        HistoryModel GetHistory(long? historyId);
         List<HistoryModel> GetAllHistories();
         void DeleteHistory(long historyId);
     }

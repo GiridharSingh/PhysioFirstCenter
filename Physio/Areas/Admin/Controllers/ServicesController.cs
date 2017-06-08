@@ -59,8 +59,6 @@ namespace Physio.Areas.Admin.Controllers
         [ValidateInput(false)] 
         public ActionResult Create([Bind(Include = "ServiceName,ShortDesc,LongDesc,IsActive,Priority")] ServicesModel service, HttpPostedFileBase file)
         {
-
-
             int retvalue = _IService.AddService(service, file);
             if (retvalue > 0)
             {
