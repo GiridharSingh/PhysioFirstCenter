@@ -1875,6 +1875,30 @@ footer .col-lg-3.indent:after {
  height: 300px;
 }
 }
+
+/*===========================ABOUT CLINIC=============================*/
+.container figure img {
+    border:1px solid #DDD; padding:3px;
+}
+.container figure + a{
+        margin-bottom: 5px !important;
+}
+
+
+/*=============================testimonial================================*/
+.testimonial figure img {
+    border: 1px solid #DDD;    
+    padding:5px;
+    border-radius: 0px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+}
+.testimonial .thumb-pad5 {
+     margin: 0;
+    overflow: hidden;
+    border: 1px solid rgb(221, 221, 221);
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
 /*===========================================================================================================================*/
  #dvPreview {
         filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);
@@ -1927,6 +1951,7 @@ footer .col-lg-3.indent:after {
  .thumb-pad5 figure {
  margin: 0 0 20px 0;
  float: none;
+ text-align:center;
 }
  footer .col-lg-3 {
  height: auto !important;

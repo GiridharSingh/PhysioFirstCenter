@@ -9,7 +9,9 @@ $(function(){
     $(".maxheight3").each(function(){
 		$(this).contents().wrapAll("<div class='box_inner'></div>");
 	})
-
+    $(".maxheight4").each(function () {
+        $(this).contents().wrapAll("<div class='box_inner'></div>");
+    })
 
 })
 /*add event*/
@@ -29,7 +31,12 @@ function height_handler(){
 		$(".maxheight3").equalHeights();
 	}else{
 		$(".maxheight3").equalHeights();
-	}
+    }
+    if ($(window).width() > 740) {
+        $(".maxheight4").equalHeights();
+    } else {
+        $(".maxheight4").equalHeights();
+    }
 
 }
 /*glob function*/
