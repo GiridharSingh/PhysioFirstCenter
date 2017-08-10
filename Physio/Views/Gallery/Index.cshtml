@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+    <link href='~/Content/simplelightbox.min.css' rel='stylesheet' type='text/css'>
+    <title> Gallery</title>  
+    <style>
+
+    </style> 
+</head>
+<body>
+    <div class="content indent">
+        <div class="container">
+            <div class="row gallery">
+                <a href="~/Content/Images/image1.jpg" class="big"><img src="~/Content/Images/image1.jpg" alt="Beautiful Image" title="Beautiful Image" /></a>
+                <a href="~/Content/Images/image2.jpg"><img src="~/Content/Images/image2.jpg" alt="" title="" /></a>
+                <a href="~/Content/Images/image3.jpg"><img src="~/Content/Images/image3.jpg" alt="" title="Beautiful Image" /></a>
+                <a href="~/Content/Images/image4.jpg"><img src="~/Content/Images/image4.jpg" alt="" title="" /></a>
+                <a href="~/Content/Images/image5.jpg"><img src="~/Content/Images/image5.jpg" alt="" title="" /></a>
+                <a href="~/Content/Images/image6.jpg"><img src="~/Content/Images/image6.jpg" alt="" title="" /></a>
+                <a href="~/Content/Images/image7.jpg" class="big"><img src="~/Content/Images/image7.jpg" alt="" title="" /></a>
+                <a href="~/Content/Images/image8.jpg"><img src="~/Content/Images/image8.jpg" alt="" title="" /></a>
+                <a href="~/Content/Images/image9.jpg" class="big"><img src="~/Content/Images/image9.jpg" alt="" title="" /></a>
+                <a href="~/Content/Images/image10.jpg"><img src="~/Content/Images/image10.jpg" alt="" title="" /></a>
+                <a href="~/Content/Images/image11.jpg"><img src="~/Content/Images/image11.jpg" alt="" title="" /></a>
+                <a href="~/Content/Images/image12.jpg"><img src="~/Content/Images/image12.jpg" alt="" title="" /></a>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/simple-lightbox.min.js"></script>
+
+
+        <script>
+            $(function () {
+                var $gallery = $('.gallery a').simpleLightbox();
+
+                $gallery.on('show.simplelightbox', function () {
+                    console.log('Requested for showing');
+                })
+                .on('shown.simplelightbox', function () {
+                    console.log('Shown');
+                })
+                .on('close.simplelightbox', function () {
+                    console.log('Requested for closing');
+                })
+                .on('closed.simplelightbox', function () {
+                    console.log('Closed');
+                })
+                .on('change.simplelightbox', function () {
+                    console.log('Requested for change');
+                })
+                .on('next.simplelightbox', function () {
+                    console.log('Requested for next');
+                })
+                .on('prev.simplelightbox', function () {
+                    console.log('Requested for prev');
+                })
+                .on('nextImageLoaded.simplelightbox', function () {
+                    console.log('Next image loaded');
+                })
+                .on('prevImageLoaded.simplelightbox', function () {
+                    console.log('Prev image loaded');
+                })
+                .on('changed.simplelightbox', function () {
+                    console.log('Image changed');
+                })
+                .on('nextDone.simplelightbox', function () {
+                    console.log('Image changed to next');
+                })
+                .on('prevDone.simplelightbox', function () {
+                    console.log('Image changed to prev');
+                })
+                .on('error.simplelightbox', function (e) {
+                    console.log('No image found, go to the next/prev');
+                    console.log(e);
+                });
+            });
+        </script>
+</body>
+</html>
+
+
+

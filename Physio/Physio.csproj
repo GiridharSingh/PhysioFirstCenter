@@ -155,6 +155,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AboutClinicController.cs" />
     <Compile Include="Areas\Admin\Controllers\TestimonialController.cs" />
+    <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\TestimonialClientController.cs" />
     <Compile Include="CustomControllerFactory.cs" />
     <Compile Include="Areas\Admin\Controllers\EmployeesController.cs" />
@@ -192,6 +193,18 @@
     <Content Include="Content\Images\five.jpg" />
     <Content Include="Content\Images\form-loader.gif" />
     <Content Include="Content\Images\four.jpg" />
+    <Content Include="Content\Images\image1.jpg" />
+    <Content Include="Content\Images\image10.jpg" />
+    <Content Include="Content\Images\image11.jpg" />
+    <Content Include="Content\Images\image12.jpg" />
+    <Content Include="Content\Images\image2.jpg" />
+    <Content Include="Content\Images\image3.jpg" />
+    <Content Include="Content\Images\image4.jpg" />
+    <Content Include="Content\Images\image5.jpg" />
+    <Content Include="Content\Images\image6.jpg" />
+    <Content Include="Content\Images\image7.jpg" />
+    <Content Include="Content\Images\image8.jpg" />
+    <Content Include="Content\Images\image9.jpg" />
     <Content Include="Content\Images\leftArrow.png" />
     <Content Include="Content\Images\list_point.png" />
     <Content Include="Content\Images\logo.png" />
@@ -240,11 +253,24 @@
     <Content Include="Content\Images\picture3.jpg" />
     <Content Include="Content\Images\prev.png" />
     <Content Include="Content\Images\three.jpg" />
+    <Content Include="Content\Images\thumbs\thumb1.jpg" />
+    <Content Include="Content\Images\thumbs\thumb10.jpg" />
+    <Content Include="Content\Images\thumbs\thumb11.jpg" />
+    <Content Include="Content\Images\thumbs\thumb12.jpg" />
+    <Content Include="Content\Images\thumbs\thumb2.jpg" />
+    <Content Include="Content\Images\thumbs\thumb3.jpg" />
+    <Content Include="Content\Images\thumbs\thumb4.jpg" />
+    <Content Include="Content\Images\thumbs\thumb5.jpg" />
+    <Content Include="Content\Images\thumbs\thumb6.jpg" />
+    <Content Include="Content\Images\thumbs\thumb7.jpg" />
+    <Content Include="Content\Images\thumbs\thumb8.jpg" />
+    <Content Include="Content\Images\thumbs\thumb9.jpg" />
     <Content Include="Content\Images\title_icon1.png" />
     <Content Include="Content\Images\title_icon2.png" />
     <Content Include="Content\Images\top.png" />
     <Content Include="Content\Images\two.jpg" />
     <Content Include="Content\Images\WhoAreWe.jpg" />
+    <Content Include="Content\simplelightbox.min.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -323,6 +349,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\simple-lightbox.min.js" />
     <Content Include="Scripts\superfish.js" />
     <Content Include="Scripts\tinymce\jquery.tinymce.min.js" />
     <Content Include="Scripts\tinymce\license.txt" />
@@ -519,6 +546,8 @@
     <Content Include="Views\ClinicDetail\Index.cshtml" />
     <Content Include="Views\Shared\Admin_Layout.cshtml" />
     <Content Include="Views\TestimonialClient\Index.cshtml" />
+    <Content Include="Views\Shared\Gallery.cshtml" />
+    <Content Include="Views\Gallery\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

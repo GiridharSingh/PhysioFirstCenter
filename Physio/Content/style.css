@@ -1673,6 +1673,50 @@ footer .col-lg-3.indent:after {
 .follow_icon2 li a:hover {
 	color: #e44554;
 }
+
+/*Start for Gallery */
+    .clear {
+            clear: both;
+            float: none;
+            width: 100%;
+        }
+   
+    .container .gallery a img {
+        float: left;
+        width: 20%;
+        height: auto;
+        border: 2px solid #fff;
+        -webkit-transition: -webkit-transform .15s ease;
+        -moz-transition: -moz-transform .15s ease;
+        -o-transition: -o-transform .15s ease;
+        -ms-transition: -ms-transform .15s ease;
+        transition: transform .15s ease;
+        position: relative;
+    }
+    
+    .container .gallery a:hover img {
+        -webkit-transform: scale(1.05);
+        -moz-transform: scale(1.05);
+        -o-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05);
+        z-index: 5;
+    }
+    
+    .container .gallery a.big img {
+        width: 40%;
+    }
+
+    
+    .align-center {
+        text-align: center;
+    }
+    .row.gallery a img {
+    height: 200px;
+}
+/*Start for Gallery */
+
+
 /*========================================================
                 RESPONSIVE LAYOUTS STYLES 
 =========================================================*/
@@ -1705,6 +1749,9 @@ footer .col-lg-3.indent:after {
 }
 /*===========================================================================================================================*/
 @media (min-width: 768px) and (max-width: 991px) {
+    .row.gallery a img {
+    height: 100px;
+}
  #toTop {
  display: none !important;
 }
@@ -1923,6 +1970,9 @@ footer .col-lg-3.indent:after {
  .thumb-pad7 figure {
  margin: 0 0 20px 0;
  float: none;
+}
+  .row.gallery a img {
+    height: 100px;
 }
 }
 /*===========================================================================================================================*/
