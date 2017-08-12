@@ -43,6 +43,11 @@ namespace Physio
                     {
                         obj = new TestimonialsDAL();
                         break;
+                    }
+                case "GalleryAdmin":
+                    {
+                        obj = new GalleryDAL();
+                        break;
                     } 
 
             }

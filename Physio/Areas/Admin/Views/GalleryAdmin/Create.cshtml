@@ -1,0 +1,53 @@
+﻿@model Models.Photo
+
+@{
+    ViewBag.Title = "Upload Images";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<div class="content indent">
+    <div class="container">
+        <h2>Upload Images</h2>
+        @{
+            var imgSrc = "";
+            if (Model.Image != null)
+            {
+                var base64 = Convert.ToBase64String(Model.Image);
+                imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+            }
+        }
+        @using (Html.BeginForm("Create", "GalleryAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    @Html.LabelFor(m => Model.Decription, new { @class = "control-label col-sm-3" })
+                    <div class="col-sm-5">
+                        @Html.TextBoxFor(m => Model.Decription, new { @class = "form-control required" })
+                        @Html.ValidationMessageFor(m => Model.Decription)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Choose Image(s)", new { @class = "control-label col-sm-3" })
+                    <div class="col-sm-5">
+                        <input type="file" name="files"
+                               multiple="multiple" accept=".jpg, .png, .gif" />
+                    </div>
+                </div>                               
+                
+                <div class="form-group">
+                    <div class="col-sm-5 col-sm-offset-3">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <div style="color:red">
+                            @ViewBag.error
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+ </div>
+

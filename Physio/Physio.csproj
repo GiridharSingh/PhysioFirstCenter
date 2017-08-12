@@ -154,6 +154,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AboutClinicController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GalleryAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\TestimonialController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\TestimonialClientController.cs" />
@@ -318,6 +319,7 @@
     <Content Include="Areas\Admin\Views\Testimonial\ShowTestimonials.cshtml" />
     <Content Include="Areas\Admin\Views\Testimonial\AddEditTestimonials.cshtml" />
     <Content Include="Areas\Admin\Views\Testimonial\TestimonialDetails.cshtml" />
+    <Content Include="Areas\Admin\Views\GalleryAdmin\Create.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\camera.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
@@ -551,7 +553,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

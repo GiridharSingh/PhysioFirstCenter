@@ -30,8 +30,7 @@ namespace DAL
                     Testimonial testimonial = new Testimonial();
                     objTestimonial.CopyProperties(testimonial);
                     db.Testimonials.Add(testimonial);
-                    db.SaveChanges();
-                    return 1;
+                    return db.SaveChanges();
                 }
                 catch (Exception ex)
                 {
@@ -95,9 +94,8 @@ namespace DAL
                 {
                     Testimonial testimonial = new Testimonial();
                     objTestimonial.CopyProperties(testimonial);
-                    db.Entry(testimonial).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return 1;
+                    db.Entry(testimonial).State = EntityState.Modified;                    
+                    return db.SaveChanges();
                 }
                 catch (Exception ex)
                 {
