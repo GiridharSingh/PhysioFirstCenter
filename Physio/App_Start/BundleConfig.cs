@@ -20,7 +20,8 @@ namespace Physio
                         "~/Scripts/jquery.dataTables.min.js",
                         "~/Scripts/jquery.mobile.customized.min.js",
                         "~/Scripts/camera.js",
-                        "~/Scripts/TMForm.js"                         
+                        "~/Scripts/TMForm.js",
+                        "~/Scripts/dropzone/dropzone.min.js" 
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -54,7 +55,9 @@ namespace Physio
                       "~/Content/camera.css",
                       "~/Content/contact-form.css",
                       "~/Content/font-awesome.css",
-                      "~/Content/dataTables.bootstrap.min.css"           
+                      "~/Content/dataTables.bootstrap.min.css",
+                      "~/Scripts/dropzone/basic.min.css",
+                      "~/Scripts/dropzone/dropzone.min.css"
                       ));  
 
             BundleTable.EnableOptimizations = true;

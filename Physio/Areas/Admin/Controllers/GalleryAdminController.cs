@@ -50,6 +50,56 @@ namespace Physio.Areas.Admin.Controllers
             }
             return RedirectPermanent("/home");
         }
+
+        [HttpPost]
+        public ActionResult SaveUploadedFile(Photo photo)
+        {
+            bool isSavedSuccessfully = true;
+            string fName = "";
+            try
+            {
+                foreach (string fileName in Request.Files)
+                {
+                    HttpPostedFileBase file = Request.Files[fileName];
+                    //Save file content goes here
+                    fName = file.FileName;
+                    var model = new Photo();
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        model.Decription = photo.Decription;  
+                        _IGallery.AddPhoto(model, file); 
+                        //var originalDirectory = new DirectoryInfo(string.Format("{0}Images\\WallImages", Server.MapPath(@"\")));
+
+                        //string pathString = System.IO.Path.Combine(originalDirectory.ToString(), "imagepath");
+
+                        //var fileName1 = Path.GetFileName(file.FileName);
+
+                        //bool isExists = System.IO.Directory.Exists(pathString);
+
+                        //if (!isExists)
+                        //    System.IO.Directory.CreateDirectory(pathString);
+
+                        //var path = string.Format("{0}\\{1}", pathString, file.FileName);
+                        //file.SaveAs(path);
+
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                isSavedSuccessfully = false;
+            }
+            if (isSavedSuccessfully)
+            {
+                return Json(new { Message = fName });
+            }
+            else
+            {
+                return Json(new { Message = "Error in saving file" });
+            }
+        }
        
     }
 }
