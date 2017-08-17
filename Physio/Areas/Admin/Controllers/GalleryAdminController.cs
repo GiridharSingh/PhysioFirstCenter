@@ -30,6 +30,12 @@ namespace Physio.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(Photo photo, IEnumerable<HttpPostedFileBase> files)
         {
+            foreach (string fileName in Request.Files)
+            {
+                HttpPostedFileBase file = Request.Files[fileName];
+                //Save file content goes here
+                string fName = file.FileName;
+            }
             int retvalue = 0;
             if (!ModelState.IsValid)
                 return View(photo);
@@ -66,8 +72,8 @@ namespace Physio.Areas.Admin.Controllers
                     var model = new Photo();
                     if (file != null && file.ContentLength > 0)
                     {
-                        model.Decription = photo.Decription;  
-                        _IGallery.AddPhoto(model, file); 
+                        model.Decription = photo.Decription;
+                        _IGallery.AddPhoto(model, file);
                         //var originalDirectory = new DirectoryInfo(string.Format("{0}Images\\WallImages", Server.MapPath(@"\")));
 
                         //string pathString = System.IO.Path.Combine(originalDirectory.ToString(), "imagepath");
@@ -92,7 +98,7 @@ namespace Physio.Areas.Admin.Controllers
                 isSavedSuccessfully = false;
             }
             if (isSavedSuccessfully)
-            {
+            {                
                 return Json(new { Message = fName });
             }
             else

@@ -18,24 +18,27 @@
     <div class="container">
         <h2>Upload Images</h2>
         <div class="jumbotron form-horizontal">
-            <form action="~/Home/SaveUploadedFile"  id="dropzoneJsForm">
-                <div class="fallback">
-                    <input name="file" type="file" multiple />
+            <form action="~/GalleryAdmin/SaveUploadedFile" method="post" id="dropzoneJsForm" enctype="multipart/form-data">
+                <div id="dropzonediv" class="dropzone ">
+                    @*<input type="file" name="files" accept=".jpg, .png, .gif" multiple />*@
                 </div>
-            </form>
-            <div class="form-group">
-                @Html.LabelFor(m => Model.Decription, new { @class = "control-label col-sm-3" })
-                <div class="col-sm-5">
-                    @Html.TextBoxFor(m => Model.Decription, new { @class = "form-control required" })
-                </div>
-            </div>
                 <div class="form-group">
-                    <div class="col-sm-5 col-sm-offset-3">
-                        <button id="submit-all">Submit All Files</button>
-
+                    @Html.LabelFor(m => Model.Decription, new { @class = "control-label col-sm-3" })
+                    <div class="col-sm-5">
+                        @Html.TextBoxFor(m => Model.Decription, new { @class = "form-control required" })
                     </div>
                 </div>
-         
+                <div class="form-group">
+                    <div class="col-sm-5 col-sm-offset-3">
+                        @*<button id="submit-all">Submit All Files</button>*@
+                        <input type="submit" id="submit-all"  value="Submit All Files" class="btn btn-primary" />
+                        @*<div style="color:red">
+                            @ViewBag.error
+                        </div>*@
+                    </div>
+                </div>
+            </form>
+            
         </div>
 
         @*@using (Html.BeginForm("Create", "GalleryAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -74,14 +77,15 @@
  </div>
 @section scripts {
     <script type="text/javascript">
-     
-        Dropzone.options.dropzoneJsForm = {
-
+      
+        Dropzone.autoDiscover = false;
+        $("div#dropzonediv").dropzone({
+            url: "/GalleryAdmin/SaveUploadedFile",
             //prevents Dropzone from uploading dropped files immediately
             autoProcessQueue: false,
             addRemoveLinks: true,
-            previewsContainer: "#PrevZone",
-            clickable: "#PrevZone",
+            previewsContainer: "#dropzonediv",
+            clickable: "#dropzonediv",
             init: function () {
                 var submitButton = document.querySelector("#submit-all");
                 var myDropzone = this; //closure
@@ -96,7 +100,7 @@
                 var _ref;
                 return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
             }
-        };
+        });
 
     </script>
 }

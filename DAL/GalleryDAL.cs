@@ -29,7 +29,7 @@ namespace DAL
                 }
             }
 
-            objPhoto.CreatedOn = DateTime.Now.Date;
+            objPhoto.CreatedOn = DateTime.Now;
             objPhoto.IsActive = true;
             using (PhysioDevEntities db = new PhysioDevEntities())
             {
