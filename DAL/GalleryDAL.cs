@@ -54,9 +54,12 @@ namespace DAL
             {
                 try
                 {
-                    var galleries = db.Galleries.Where(m => m.PhotoId == PhotoId).FirstOrDefault();
-                    galleries.IsActive = false;
+                    var Photo = db.Galleries.Where(m => m.PhotoId == PhotoId).FirstOrDefault();
+                    db.Entry(Photo).State = EntityState.Deleted; //Delete forever
+                    //galleries.IsActive = false;
                     return db.SaveChanges();
+              
+                   
                 }
                 catch (Exception ex)
                 {

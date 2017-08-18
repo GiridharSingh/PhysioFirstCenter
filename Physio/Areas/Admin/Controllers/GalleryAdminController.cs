@@ -20,74 +20,40 @@ namespace Physio.Areas.Admin.Controllers
         {
             this._IGallery = objGallery;
         }
+        public ActionResult ShowGallery()
+        {
+            var photos = _IGallery.GetAllPhoto();
+            return View("ShowGallery", photos);
+        }
         // GET: Admin/GalleryAdmin
         [HttpGet]
         public ActionResult Create()
         {
             var photo = _IGallery.GetPhoto(null);
+            var file = Request.Files;
+
             return View(photo);
         }
         [HttpPost]
-        public ActionResult Create(Photo photo, IEnumerable<HttpPostedFileBase> files)
+        public ActionResult Create(string Decription )
         {
-            foreach (string fileName in Request.Files)
-            {
-                HttpPostedFileBase file = Request.Files[fileName];
-                //Save file content goes here
-                string fName = file.FileName;
-            }
-            int retvalue = 0;
-            if (!ModelState.IsValid)
-                return View(photo);
-            if (files.Count() == 0 || files.FirstOrDefault() == null)
-            {
-                ViewBag.error = "Please choose a file";
-                return View(photo);
-            }
-
-            var model = new Photo();
-            foreach (var file in files)
-            {
-                if (file.ContentLength == 0) continue;
-
-                model.Decription = photo.Decription;                
-                retvalue =retvalue + _IGallery.AddPhoto(model, file);                
-                
-            }
-            return RedirectPermanent("/home");
-        }
-
-        [HttpPost]
-        public ActionResult SaveUploadedFile(Photo photo)
-        {
-            bool isSavedSuccessfully = true;
-            string fName = "";
+            bool isSavedSuccessfully = false;
+            int fCount = 0;           
             try
             {
+                fCount = Request.Files.Count;
                 foreach (string fileName in Request.Files)
                 {
                     HttpPostedFileBase file = Request.Files[fileName];
                     //Save file content goes here
-                    fName = file.FileName;
+                    //fName = file.FileName;
                     var model = new Photo();
                     if (file != null && file.ContentLength > 0)
                     {
-                        model.Decription = photo.Decription;
+                        model.Decription = Decription;//photo.Decription;
                         _IGallery.AddPhoto(model, file);
-                        //var originalDirectory = new DirectoryInfo(string.Format("{0}Images\\WallImages", Server.MapPath(@"\")));
-
-                        //string pathString = System.IO.Path.Combine(originalDirectory.ToString(), "imagepath");
-
-                        //var fileName1 = Path.GetFileName(file.FileName);
-
-                        //bool isExists = System.IO.Directory.Exists(pathString);
-
-                        //if (!isExists)
-                        //    System.IO.Directory.CreateDirectory(pathString);
-
-                        //var path = string.Format("{0}\\{1}", pathString, file.FileName);
-                        //file.SaveAs(path);
-
+                        isSavedSuccessfully = true;
+                       
                     }
 
                 }
@@ -98,13 +64,28 @@ namespace Physio.Areas.Admin.Controllers
                 isSavedSuccessfully = false;
             }
             if (isSavedSuccessfully)
-            {                
-                return Json(new { Message = fName });
+            {
+               // ViewBag.ResponseMsg = "All files saved successful " + fName;
+                //return View("Create", photo);
+                //return RedirectToAction("ShowGallery");
+               return Json(new { Message = fCount+ " files saved successful" });
             }
             else
             {
+                //ViewBag.ResponseMsg = "Error in saving file " + fName;
+                //return View("Create", photo);
                 return Json(new { Message = "Error in saving file" });
+                //return RedirectToAction("Create");
             }
+        }
+        public ActionResult DeletePhoto(int? PhotoId)
+        {
+            if (PhotoId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            _IGallery.DeletePhoto(PhotoId.Value);
+            return RedirectToAction("ShowGallery");
         }
        
     }

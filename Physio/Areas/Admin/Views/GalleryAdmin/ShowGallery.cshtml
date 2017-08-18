@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Models.Photo>
+@{
+    ViewBag.Title = "ShowGallery";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<div class="content indent">
+    <div class="container">
+        <h4>Show Gallery Setting</h4>
+        <div class="row">
+            <p>
+                @Html.ActionLink("Upload Images", "Create", "GalleryAdmin", new { area = "Admin" }, new { @class = "btn btn-default" })
+            </p>
+            <table class="table" id="tblGallery" style=" border:1px solid">
+                <thead>
+                    <tr>
+                        <th>Decription</th>
+                        <th>IsActive</th>
+                        <th>Image</th>
+                        <th>Created On</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Decription)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IsActive)
+                            </td>
+                            <td>
+                                @{var imgSrc = "";
+                                if (item.ThumbImage != null)
+                                {
+                                    var base64 = Convert.ToBase64String(item.ThumbImage);
+                                    imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                }
+                                <img src="@imgSrc" alt="" class="img-thumbnail" style="max-height:150px;max-width:150px" />
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreatedOn)
+                            </td>
+
+                            <td>
+                                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "TestimonialDetails", new { id = item.Id }) |*@
+                                @Html.ActionLink("Delete", "DeletePhoto", new { PhotoId = item.PhotoId })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $('#tblTestimonial').DataTable({
+            "columnDefs": [
+                { "width": "20%", "targets": 0 },
+                { "width": "20%", "targets": 1 },
+                { "width": "15%", "targets": 2 },
+                { "width": "30%", "targets": 3 }
+                //{ "width": "15%", "targets": 4 }
+            ]
+        });
+    });
+</script>
+

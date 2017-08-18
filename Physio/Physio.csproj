@@ -320,6 +320,7 @@
     <Content Include="Areas\Admin\Views\Testimonial\AddEditTestimonials.cshtml" />
     <Content Include="Areas\Admin\Views\Testimonial\TestimonialDetails.cshtml" />
     <Content Include="Areas\Admin\Views\GalleryAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\GalleryAdmin\ShowGallery.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\camera.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
