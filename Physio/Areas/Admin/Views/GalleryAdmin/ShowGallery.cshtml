@@ -31,15 +31,8 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.IsActive)
                             </td>
-                            <td>
-                                @{var imgSrc = "";
-                                if (item.ThumbImage != null)
-                                {
-                                    var base64 = Convert.ToBase64String(item.ThumbImage);
-                                    imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                                }
-                                <img src="@imgSrc" alt="" class="img-thumbnail" style="max-height:150px;max-width:150px" />
-                                }
+                            <td>                               
+                                <img src="@item.ImagePath" alt="" class="img-thumbnail" style="max-height:150px;max-width:150px" />                                
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.CreatedOn)

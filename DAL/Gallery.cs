@@ -16,9 +16,8 @@ namespace DAL
     {
         public int PhotoId { get; set; }
         public string Decription { get; set; }
-        public byte[] Image { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
-        public byte[] ThumbImage { get; set; }
+        public string ImagePath { get; set; }
     }
 }

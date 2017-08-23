@@ -9,12 +9,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto|Roboto+Condensed|Ubuntu" rel="stylesheet">
 
-    <script>
-        //$(document).ready(function(){
-        //    jQuery('.camera_wrap').camera();
-
-        //});        
-    </script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
     <!--[if (gt IE 9)|!(IE)]><!-->
     <script src="~/Scripts/wow/wow.js"></script>
     <script src="~/Scripts/wow/device.min.js"></script>
@@ -26,11 +24,7 @@
             }
         });
     </script>
-    @* <title></title>*@
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>@ViewBag.Title</title>   
 
 </head>
 <body>

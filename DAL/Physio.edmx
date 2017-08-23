@@ -67,10 +67,9 @@
           </Key>
           <Property Name="PhotoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Decription" Type="varchar" MaxLength="200" />
-          <Property Name="Image" Type="varbinary(max)" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="CreatedOn" Type="datetime" />
-          <Property Name="ThumbImage" Type="varbinary(max)" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="History">
           <Key>
@@ -282,10 +281,9 @@
           </Key>
           <Property Name="PhotoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Decription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="ThumbImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -404,10 +402,9 @@
           <EntitySetMapping Name="Galleries">
             <EntityTypeMapping TypeName="PhysioDevModel.Gallery">
               <MappingFragment StoreEntitySet="Gallery">
-                <ScalarProperty Name="ThumbImage" ColumnName="ThumbImage" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Decription" ColumnName="Decription" />
                 <ScalarProperty Name="PhotoId" ColumnName="PhotoId" />
               </MappingFragment>

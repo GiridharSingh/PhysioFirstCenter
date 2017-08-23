@@ -48,6 +48,11 @@ namespace Physio
                     {
                         obj = new GalleryDAL();
                         break;
+                    }
+                case "Gallery":
+                    {
+                        obj = new GalleryDAL();
+                        break;
                     } 
 
             }

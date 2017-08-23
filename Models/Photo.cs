@@ -10,8 +10,9 @@ namespace Models
     {      
         public int PhotoId { get; set; }        
         public String Decription { get; set; }
-        public byte[] Image { get; set; }
-        public byte[] ThumbImage { get; set; }
+        public String ImagePath { get; set; }
+        //public byte[] Image { get; set; }
+        //public byte[] ThumbImage { get; set; }
         public bool? IsActive { get; set; }
         public DateTime? CreatedOn { get; set; }
     }

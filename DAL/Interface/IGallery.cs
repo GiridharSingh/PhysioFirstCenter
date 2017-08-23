@@ -10,7 +10,7 @@ namespace DAL.Interface
 {
     public interface IGallery
     {
-        int AddPhoto(Photo objPhoto, HttpPostedFileBase file);
+        int AddPhoto(Photo objPhoto);
         int DeletePhoto(int PhotoId);
         List<Photo> GetAllPhoto();
         Photo GetPhoto(int? PhotoId);

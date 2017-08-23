@@ -186,6 +186,9 @@
     <Content Include="Content\contact-form.css" />
     <Content Include="Content\dataTables.bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\GalleryImages\Physiologo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Images\ACCESSIBLE.jpg" />
     <Content Include="Content\Images\call_girl.png" />
     <Content Include="Content\Images\camera-loader.gif" />
@@ -557,7 +560,6 @@
     <Content Include="Views\ClinicDetail\Index.cshtml" />
     <Content Include="Views\Shared\Admin_Layout.cshtml" />
     <Content Include="Views\TestimonialClient\Index.cshtml" />
-    <Content Include="Views\Shared\Gallery.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

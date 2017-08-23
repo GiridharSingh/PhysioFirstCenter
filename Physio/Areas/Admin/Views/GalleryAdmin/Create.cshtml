@@ -8,7 +8,7 @@
 #dropZone {
         background: gray;
         border: black dashed 3px;
-        width: 200px;
+        width: 100px;
         padding: 50px;
         text-align: center;
         color: white;
@@ -18,63 +18,27 @@
     <div class="container">
         <h2>Upload Images</h2>
         <div class="jumbotron form-horizontal">
-            @*<form  id="dropzoneJsForm" enctype="multipart/form-data">*@
+            <p>
+                @Html.ActionLink("Back", "ShowGallery", "GalleryAdmin", new { area = "Admin" }, new { @class = "btn btn-default" })
+            </p>
             @using (Html.BeginForm("Create", "GalleryAdmin", FormMethod.Post, new { id = "dropzoneJsForm", enctype = "multipart/form-data", @class = "dropzone" }))
             {
             
-            }
-            @*</form>*@
-            <div id="decDiv" class="form-group" style="display:none">
-                @Html.LabelFor(m => Model.Decription, new { @class = "control-label col-sm-3" })
+            }        
+            <div id="decDiv" class="form-group" style="display:none">               
                 <div class="col-sm-5">
-                    @Html.TextBoxFor(m => Model.Decription, new { @id = "TxtDecription", @class = "form-control required" })
+                    @Html.TextBoxFor(m => Model.Decription, new { @placeholder = "Title OR Description", @id = "TxtDecription", @class = "form-control required" })
                 </div>
-            </div>
-            <div id="submitBtnDiv" class="form-group" style="display:none">
-                <div class="col-sm-5 col-sm-offset-3">
-                    <button id="submit-all">Submit All Files</button>
+                <div class="col-sm-offset-3">
+                    <button id="submit-all" class="btn btn-default">Upload All</button>
                     <div style="color:red">
-                        <label id="ResponseMsg"></label>                       
+                        <label id="ResponseMsg"></label>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        @*@using (Html.BeginForm("Create", "GalleryAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            @Html.AntiForgeryToken()
-
-            <div class="form-horizontal">
-
-                <div class="form-group">
-                    @Html.LabelFor(m => Model.Decription, new { @class = "control-label col-sm-3" })
-                    <div class="col-sm-5">
-                        @Html.TextBoxFor(m => Model.Decription, new { @class = "form-control required" })
-                        @Html.ValidationMessageFor(m => Model.Decription)
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.Label("Choose Image(s)", new { @class = "control-label col-sm-3" })
-                    <div class="col-sm-5">
-                        <input type="file" name="files"
-                               multiple="multiple" accept=".jpg, .png, .gif" />
-                    </div>
-                </div>                               
-                
-                <div class="form-group">
-                    <div class="col-sm-5 col-sm-offset-3">
-                        <input type="submit" value="Save" class="btn btn-primary" />
-                        <div style="color:red">
-                            @ViewBag.error
-                        </div>
-                    </div>
-                </div>
-            </div>
-        }*@
+            </div>           
+        </div>       
     </div>
  </div>
-@section scripts {
     <script type="text/javascript">             
         Dropzone.options.dropzoneJsForm = {           
             paramName: "files",           
@@ -89,36 +53,23 @@
                 this.on("sending", function (file, xhr, formData) {
                     formData.append("Decription", $("#TxtDecription").val());
                 });
-                submitButton.addEventListener("click", function () {
-                    debugger;
-                    if ($("#TxtDecription").val() != '') {
+                submitButton.addEventListener("click", function () {                                  
                         //tell Dropzone to process all queued files
-                        myDropzone.processQueue();
-                    } else {                       
-                        $("#ResponseMsg").val("Image decription is Required");
-                          $('#ResponseMsg').show();
-                    }
-                    
+                        myDropzone.processQueue();                                    
                 });                
-                this.on("successmultiple", function (files, response) {
-                    debugger;
-                    alert(response.Message);
-                    //$("#ResponseMsg").val(response.Message);
+                this.on("successmultiple", function (files, response) {                  
+                    alert(response.Message);                   
                     // Gets triggered when the files have successfully been sent.
                     // Redirect user or notify of success.
                 });
-                this.on("errormultiple", function (files, response) {
-                    debugger;
-                    alert(response.Message);
-                    //$("#ResponseMsg").val(response.Message);
+                this.on("errormultiple", function (files, response) {                   
+                    alert(response.Message);                   
                     // Gets triggered when there was an error sending the files.
                     // Maybe show form again, and notify user of error
                 });
-                this.on("addedfile", function () {
-                    debugger;
+                this.on("addedfile", function () {                  
                     // Show submit button here and/or inform user to click it.
-                    $('#decDiv').show();
-                    $('#submitBtnDiv').show();
+                    $('#decDiv').show();                   
                 });
                 
             },
@@ -129,5 +80,4 @@
         };
 
     </script>
-}
 

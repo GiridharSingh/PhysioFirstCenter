@@ -37,24 +37,33 @@ namespace Physio.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(string Decription )
         {
-            bool isSavedSuccessfully = false;
+            bool isSavedSuccessfully = false;           
             int fCount = 0;           
             try
             {
                 fCount = Request.Files.Count;
-                foreach (string fileName in Request.Files)
+                foreach (string objfile in Request.Files)
                 {
-                    HttpPostedFileBase file = Request.Files[fileName];
-                    //Save file content goes here
-                    //fName = file.FileName;
+                    HttpPostedFileBase file = Request.Files[objfile];
+                    //Save file content goes here                    
                     var model = new Photo();
                     if (file != null && file.ContentLength > 0)
                     {
-                        model.Decription = Decription;//photo.Decription;
-                        _IGallery.AddPhoto(model, file);
-                        isSavedSuccessfully = true;
-                       
-                    }
+                        string fileNameGuid = Guid.NewGuid().ToString();
+                        string extension = System.IO.Path.GetExtension(file.FileName).ToLower();
+                        string newFileName = String.Format("{0}{1}", fileNameGuid, extension); 
+
+                        model.Decription = Decription;
+                        model.ImagePath = String.Format("/Content/GalleryImages/{0}", newFileName);
+                        model.CreatedOn = DateTime.Now;
+                        model.IsActive = true;
+                        if (SaveToFolder(file, newFileName))
+                        {
+                            _IGallery.AddPhoto(model);
+                            isSavedSuccessfully = true;      
+                        }
+                                                                           
+                    }                    
 
                 }
 
@@ -64,18 +73,12 @@ namespace Physio.Areas.Admin.Controllers
                 isSavedSuccessfully = false;
             }
             if (isSavedSuccessfully)
-            {
-               // ViewBag.ResponseMsg = "All files saved successful " + fName;
-                //return View("Create", photo);
-                //return RedirectToAction("ShowGallery");
+            {               
                return Json(new { Message = fCount+ " files saved successful" });
             }
             else
-            {
-                //ViewBag.ResponseMsg = "Error in saving file " + fName;
-                //return View("Create", photo);
-                return Json(new { Message = "Error in saving file" });
-                //return RedirectToAction("Create");
+            {                
+                return Json(new { Message = "Error in saving file" });                
             }
         }
         public ActionResult DeletePhoto(int? PhotoId)
@@ -84,8 +87,56 @@ namespace Physio.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            _IGallery.DeletePhoto(PhotoId.Value);
+            var Image = _IGallery.GetPhoto(PhotoId);
+            if (DeletefileFromFolder(Image.ImagePath))
+            {
+                _IGallery.DeletePhoto(PhotoId.Value);
+            }            
             return RedirectToAction("ShowGallery");
+        }
+        private bool DeletefileFromFolder( string virtualPath)
+        {
+            bool isDeleted = false;
+            try
+            {
+                var path = Path.Combine(Server.MapPath(virtualPath));
+                FileInfo fi = new FileInfo(path);
+                if (fi.Exists)
+                {
+                    fi.Delete();
+                    isDeleted = true;
+                }                   
+            }
+            catch (Exception ex)
+            {
+                isDeleted = false;
+            }
+         return isDeleted;
+        }
+        private bool SaveToFolder(HttpPostedFileBase file, string newFileName)
+        {
+            bool isSaved = false;
+            try
+            {
+                if (file != null && file.ContentLength > 0)
+                {
+                    var path = Path.Combine(Server.MapPath("~/Content/GalleryImages"));
+                    string pathString = System.IO.Path.Combine(path.ToString());                                                       
+                    bool isExists = System.IO.Directory.Exists(pathString);
+                    if (!isExists)
+                    {
+                        System.IO.Directory.CreateDirectory(pathString);
+                    }
+                    var uploadpath = string.Format("{0}\\{1}", pathString, newFileName);
+                    file.SaveAs(uploadpath);
+                    isSaved = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                isSaved = false;
+            }
+            return isSaved;
         }
        
     }
