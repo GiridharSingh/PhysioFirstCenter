@@ -120,8 +120,7 @@ namespace Physio.Areas.Admin.Controllers
             {
                 if (file != null && file.ContentLength > 0)
                 {
-                    var path = Path.Combine(Server.MapPath("~/Content/GalleryImages"));
-                    string pathString = System.IO.Path.Combine(path.ToString());                                                       
+                    var pathString = Path.Combine(Server.MapPath("~/Content/GalleryImages"));                                                                     
                     bool isExists = System.IO.Directory.Exists(pathString);
                     if (!isExists)
                     {

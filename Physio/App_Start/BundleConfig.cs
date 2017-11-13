@@ -21,7 +21,8 @@ namespace Physio
                         "~/Scripts/jquery.mobile.customized.min.js",
                         "~/Scripts/camera.js",
                         "~/Scripts/TMForm.js",
-                        "~/Scripts/dropzone/dropzone.min.js" 
+                        "~/Scripts/dropzone/dropzone.min.js",
+                        "~/Scripts/simple-lightbox.min.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -49,6 +50,7 @@ namespace Physio
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/simplelightbox.min.css",
                       "~/Content/bootstrap.css",                      
                       "~/Content/style.css",
                       "~/Content/animate.css",

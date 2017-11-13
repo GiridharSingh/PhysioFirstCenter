@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Models.Photo>
+﻿@model IEnumerable<Models.DriveFile>
 @{
     ViewBag.Title = "Gallery";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,26 +6,29 @@
 <title>Gallery</title>
 <div class="content indent">
     <div class="container">
-        <div class="row gallery">
+        <div class="gallery row">
 
             @foreach (var item in Model)
-            { 
-                var imgPath = item.ImagePath;
-                var imgTitle = item.Decription;                
-                <a href="@imgPath"> <img src="@imgPath" alt=""  title="@imgTitle" /> </a>
-            }      
-
+            {
+                var WebContentLink = item.WebContentLink;
+                var ThumbnailLink = item.ThumbnailLink;
+                var imgTitle = string.IsNullOrEmpty(item.Description) ? "PhysioFirst Healthcare":item.Description;               
+                <a href="@WebContentLink"> <img src="@ThumbnailLink" alt="" title="@imgTitle" /> </a>
+            }                 
+            @*<a href="@imgPath"> <img src="@imgPath" alt="" title="@imgTitle" /> </a>*@
             <div class="clear"></div>
         </div>
         <div id="ImgsourecDiv"> </div>
     </div>
 </div>
 <script>
-    $(function () {        
-        var $gallery = $('.gallery a').simpleLightbox();
+
+
+    $(function () {
+              
+        var $gallery = $('.gallery a').simpleLightbox({ fileExt: '' });
         $gallery.on('show.simplelightbox', function () {
             console.log('Requested for showing');
-
         })
         .on('shown.simplelightbox', function () {
               console.log('Shown');
