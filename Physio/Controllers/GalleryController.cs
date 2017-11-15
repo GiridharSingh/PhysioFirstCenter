@@ -17,7 +17,7 @@ namespace Physio.Controllers
         {
             this._IGallery = objGallery;
         }
-        //
+        
         // GET: /Gallery/
         public ActionResult Index()
         {
