@@ -59,7 +59,7 @@ namespace Physio.GoogleDrive
                 FilesResource.ListRequest listRequest = service.Files.List();
                 listRequest.Q = "parents in '0B0a2qZk7n1UQcE91anYybHJnNzQ' and mimeType='image/jpeg'";
                 listRequest.Fields = "nextPageToken,files(id, name,mimeType,thumbnailLink,webViewLink,webContentLink,hasThumbnail)";
-                listRequest.PageSize = 15;
+                listRequest.PageSize = 5;
                 // List files.
                 IList<Google.Apis.Drive.v3.Data.File> files = listRequest.Execute()
                     .Files;               
