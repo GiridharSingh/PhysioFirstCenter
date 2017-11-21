@@ -23,8 +23,9 @@ namespace Physio.Controllers
         {
             
             string secretJsonPath = Path.Combine(Server.MapPath("~/GoogleDrive/client_secret.json"));
+            string credentialsJSONPath = Path.Combine(Server.MapPath("~/GoogleDrive/.credentials/drive-dotnet-quickstart.json"));
             string applicationName ="Drive API .NET Quickstart";  //"PhysioFirstAouth";
-            GoogleDriveHelper driveHelper = new GoogleDriveHelper(secretJsonPath, applicationName);
+            GoogleDriveHelper driveHelper = new GoogleDriveHelper(secretJsonPath, applicationName, credentialsJSONPath);
             var listFiles = driveHelper.GetFilesFromGDrive();
             //var model = _IGallery.GetAllPhoto();
             return View(listFiles);

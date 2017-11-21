@@ -350,8 +350,13 @@
     <Content Include="Areas\Admin\Views\Testimonial\TestimonialDetails.cshtml" />
     <Content Include="Areas\Admin\Views\GalleryAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\GalleryAdmin\ShowGallery.cshtml" />
-    <Content Include="GoogleDrive\client_secret_Web.json" />
+    <Content Include="GoogleDrive\client_secret_Web.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="GoogleDrive\client_secret.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GoogleDrive\.credentials\drive-dotnet-quickstart.json\Google.Apis.Auth.OAuth2.Responses.TokenResponse-user">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

@@ -18,10 +18,12 @@ namespace Physio.GoogleDrive
         static string[] Scopes = { DriveService.Scope.DriveReadonly};
         private static string applicationName ="Drive API .NET Quickstart";  //"PhysioFirstAouth";
         private string secretJsonPath = string.Empty;
-        public GoogleDriveHelper(string _secretJsonPath,string _applicationName)
+        string credentialsJSONPath = string.Empty;
+        public GoogleDriveHelper(string _secretJsonPath, string _applicationName, string _credentialsJSONPath)
         {
             secretJsonPath = _secretJsonPath;
             applicationName = _applicationName;
+            credentialsJSONPath = _credentialsJSONPath;
         }
         private UserCredential GetCredential()
         {
@@ -29,16 +31,16 @@ namespace Physio.GoogleDrive
             using (var stream =
                    new FileStream(secretJsonPath, FileMode.Open, FileAccess.Read))
             {
-                string credPath = System.Environment.GetFolderPath(
-                    System.Environment.SpecialFolder.Personal);
-                credPath = Path.Combine(credPath, ".credentials/drive-dotnet-quickstart.json");
+                //string credPath = System.Environment.GetFolderPath(
+                //    System.Environment.SpecialFolder.Personal);
+                //credPath = Path.Combine(credPath, ".credentials/drive-dotnet-quickstart.json");
 
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
                     GoogleClientSecrets.Load(stream).Secrets,
                     Scopes,
                     "user",
                     CancellationToken.None,
-                    new FileDataStore(credPath, true)).Result;                
+                    new FileDataStore(credentialsJSONPath, true)).Result;                
             }
             return credential;
         }
@@ -59,7 +61,7 @@ namespace Physio.GoogleDrive
                 FilesResource.ListRequest listRequest = service.Files.List();
                 listRequest.Q = "parents in '0B0a2qZk7n1UQcE91anYybHJnNzQ' and mimeType='image/jpeg'";
                 listRequest.Fields = "nextPageToken,files(id, name,mimeType,thumbnailLink,webViewLink,webContentLink,hasThumbnail)";
-                listRequest.PageSize = 5;
+                listRequest.PageSize = 10;
                 // List files.
                 IList<Google.Apis.Drive.v3.Data.File> files = listRequest.Execute()
                     .Files;               
