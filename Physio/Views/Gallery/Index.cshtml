@@ -12,13 +12,18 @@
             {
                 var WebContentLink = item.WebContentLink;
                 var ThumbnailLink = item.ThumbnailLink;
-                var imgTitle = string.IsNullOrEmpty(item.Description) ? "PhysioFirst Healthcare":item.Description;               
-                <a href="@WebContentLink"> <img src="@ThumbnailLink" alt="" title="@imgTitle" /> </a>
+                var imgTitle = string.IsNullOrEmpty(item.Description) ? "PhysioFirst Healthcare" : item.Description;
+                //<a href="@WebContentLink"> <img src="@ThumbnailLink" alt="" class="img-thumbnail" title="@imgTitle" /> </a>
+                <div class="col-md-3">
+                    <a href="@WebContentLink">
+                        <img src="@ThumbnailLink" alt="" title="@imgTitle" class="img-thumbnail imgGallary" style="width:100%" />
+                    </a>
+                </div>
+
             }                 
-            @*<a href="@imgPath"> <img src="@imgPath" alt="" title="@imgTitle" /> </a>*@
+            @*<a href="@imgPath"> <mg src="@imgPath" alt="" title="@imgTitle" /> </a>*@
             <div class="clear"></div>
-        </div>
-        <div id="ImgsourecDiv"> </div>
+        </div>       
     </div>
 </div>
 <script>
