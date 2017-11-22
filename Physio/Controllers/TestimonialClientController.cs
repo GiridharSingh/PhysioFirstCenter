@@ -6,11 +6,11 @@ namespace Physio.Controllers
     public class TestimonialClientController : Controller
     {
         // GET: TestimonialClient
-        public ActionResult Index()
+        public ActionResult TestimonialIndex()
         {
             TestimonialsDAL objTestimonialsDAL = new TestimonialsDAL();
             var res = objTestimonialsDAL.GetAllTestimonial();
-            return View(res);
+            return View("Index",res);
         }
     }
 }

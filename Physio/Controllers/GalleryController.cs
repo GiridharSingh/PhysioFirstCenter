@@ -19,7 +19,7 @@ namespace Physio.Controllers
         }
         
         // GET: /Gallery/
-        public ActionResult Index()
+        public ActionResult GalleryIndex()
         {
             
             string secretJsonPath = Path.Combine(Server.MapPath("~/GoogleDrive/client_secret.json"));
@@ -28,7 +28,7 @@ namespace Physio.Controllers
             GoogleDriveHelper driveHelper = new GoogleDriveHelper(secretJsonPath, applicationName, credentialsJSONPath);
             var listFiles = driveHelper.GetFilesFromGDrive();
             //var model = _IGallery.GetAllPhoto();
-            return View(listFiles);
+            return View("Index",listFiles);
         }
        
 	}
