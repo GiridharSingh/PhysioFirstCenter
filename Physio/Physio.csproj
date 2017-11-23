@@ -223,6 +223,10 @@
     <Content Include="Content\Images\five.jpg" />
     <Content Include="Content\Images\form-loader.gif" />
     <Content Include="Content\Images\four.jpg" />
+    <Content Include="Content\Images\PhysioService1.png" />
+    <Content Include="Content\Images\PhysioService2.png" />
+    <Content Include="Content\Images\PhysioService3.png" />
+    <Content Include="Content\Images\tick_green.png" />
     <Content Include="Content\Images\image1.jpg" />
     <Content Include="Content\Images\image10.jpg" />
     <Content Include="Content\Images\image11.jpg" />
@@ -277,6 +281,7 @@
     <Content Include="Content\Images\page4_pic4.jpg" />
     <Content Include="Content\Images\pattern1.png" />
     <Content Include="Content\Images\PERSONALIZED-TREATMENT.jpg" />
+    <Content Include="Content\Images\PhysioAtDoor.jpg" />
     <Content Include="Content\Images\PHYSIOTHERAPY-12X7-CLINIC.jpg" />
     <Content Include="Content\Images\picture1.jpg" />
     <Content Include="Content\Images\picture2.jpg" />
@@ -295,6 +300,7 @@
     <Content Include="Content\Images\thumbs\thumb7.jpg" />
     <Content Include="Content\Images\thumbs\thumb8.jpg" />
     <Content Include="Content\Images\thumbs\thumb9.jpg" />
+    <Content Include="Content\Images\tick.jpg" />
     <Content Include="Content\Images\title_icon1.png" />
     <Content Include="Content\Images\title_icon2.png" />
     <Content Include="Content\Images\top.png" />
