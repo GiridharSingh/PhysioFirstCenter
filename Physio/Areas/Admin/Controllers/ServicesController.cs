@@ -21,7 +21,7 @@ namespace Physio.Areas.Admin.Controllers
         {
             this._IService = service;
         }
-        public ActionResult Index()
+        public ActionResult ServicesIndex()
         {
             
             var res = _IService.GetAllServices();

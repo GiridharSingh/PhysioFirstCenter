@@ -1,4 +1,4 @@
-﻿@model DAL.History
+﻿@model Models.HistoryModel
 
 @{
     ViewBag.Title = "Edit History";
@@ -58,7 +58,7 @@
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
                                 <input type="submit" value="Save" class="btn btn-default" />
-                                @Html.ActionLink("Back", "Index", "Histories", new { area = "Admin" }, new { @class = "btn btn-default" })
+                                @Html.ActionLink("Back", "HistoriesIndex", "Histories", new { area = "Admin" }, new { @class = "btn btn-default" })
                             </div>
                         </div>
                     </div>

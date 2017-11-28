@@ -21,7 +21,7 @@ namespace Physio.Areas.Admin.Controllers
             this._Ihistory = objHistory;
         }
 
-        public ActionResult Index()
+        public ActionResult HistoriesIndex()
         {
             var res = _Ihistory.GetAllHistories();
             return View("Index", res);
@@ -124,7 +124,7 @@ namespace Physio.Areas.Admin.Controllers
         public ActionResult DeleteHistory(long id)
         {
             _Ihistory.DeleteHistory(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("HistoriesIndex");
         }
 
         protected override void Dispose(bool disposing)

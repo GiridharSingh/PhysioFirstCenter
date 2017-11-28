@@ -1,4 +1,4 @@
-﻿@model DAL.History
+﻿@model Models.HistoryModel
 
 @{
     ViewBag.Title = "Details";
@@ -93,7 +93,7 @@
 
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10"> 
-                            @Html.ActionLink("Back", "Index", "Histories", new { area = "Admin" }, new { @class = "btn btn-default" })
+                            @Html.ActionLink("Back", "HistoriesIndex", "Histories", new { area = "Admin" }, new { @class = "btn btn-default" })
                             @Html.ActionLink("Edit History", "Edit", "Histories", new { area = "Admin", id = Model.HistoryId }, new { @class = "btn btn-default" })
                             @Html.ActionLink("Delete History", "DeleteHistory", "Histories", new { area = "Admin", id = Model.HistoryId }, new { id = "btnDelete", @class = "btn btn-default" })                         
                         </div>

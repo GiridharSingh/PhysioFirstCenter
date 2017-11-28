@@ -22,9 +22,9 @@ namespace Physio.Areas.Admin.Controllers
             this._IEmployee = employee;
         }
         // GET: Employees
-        public ActionResult Index()
+        public ActionResult EmployeesIndex()
         {
-            return View(_IEmployee.GetEmployees());
+            return View("Index", _IEmployee.GetEmployees());
         }
 
         // GET: Employees/Details/5
