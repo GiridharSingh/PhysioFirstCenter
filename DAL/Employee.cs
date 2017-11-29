@@ -23,11 +23,8 @@ namespace DAL
         public string Description { get; set; }
         public Nullable<System.DateTime> Joined_date { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
-        public Nullable<long> CreatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
-        public Nullable<long> UpdatedBy { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
     }
 }

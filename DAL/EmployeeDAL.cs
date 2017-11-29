@@ -57,7 +57,7 @@ namespace DAL
             List<EmployeeModel> lstemp = new List<EmployeeModel>();
             using (PhysioDevEntities db = new PhysioDevEntities())
             {
-                var lstemployees = db.Employees.Where(m => m.IsActive == true).OrderByDescending(m => m.EmpId).ToList();
+                var lstemployees = db.Employees.Where(m => m.IsActive == true).ToList();
                 foreach (var employee in lstemployees)
                 {
                     EmployeeModel objemp = new EmployeeModel();
