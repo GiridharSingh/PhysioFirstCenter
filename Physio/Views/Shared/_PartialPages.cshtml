@@ -1,0 +1,8 @@
+﻿@model Models.PartialPageModel
+
+<h2>@Model.PageTitle</h2>
+<h3>@Model.ShortDesc</h3>
+<div class="content">
+    @{ @Html.Raw(Model.LongDesc) }
+</div>
+

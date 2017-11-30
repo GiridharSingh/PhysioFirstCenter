@@ -48,10 +48,15 @@ namespace Physio
                     {
                         obj = new GalleryDAL();
                         break;
-                    }
+                    } 
                 case "Gallery":
                     {
                         obj = new GalleryDAL();
+                        break;
+                    }
+                case "AdminPartial":
+                    {
+                        obj = new PartialPagesDAL();
                         break;
                     } 
 

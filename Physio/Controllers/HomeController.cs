@@ -11,7 +11,7 @@ namespace Physio.Controllers
             Physio.Models.HomeViewModel homeModel = new Physio.Models.HomeViewModel();
             return View(homeModel);
         }
-
+        
         public ActionResult About()
         {
             Physio.Models.AboutViewModel AboutModel = new Physio.Models.AboutViewModel();                                   
@@ -28,6 +28,14 @@ namespace Physio.Controllers
             ServicesDAL service = new ServicesDAL();
             var res = service.GetAllServices();
             return View(res);           
+        }
+
+        [HttpGet]
+        public ActionResult GetPartialview(string PageCode)
+        {
+            PartialPagesDAL partialPage = new PartialPagesDAL();
+            var res = partialPage.GetPartialByPageCode(PageCode);
+            return PartialView("_PartialPages", res);
         }
     }
 }

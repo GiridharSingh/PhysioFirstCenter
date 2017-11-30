@@ -179,6 +179,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AboutClinicController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminPartialController.cs" />
     <Compile Include="Areas\Admin\Controllers\GalleryAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\TestimonialController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
@@ -365,6 +366,8 @@
     <Content Include="GoogleDrive\.credentials\drive-dotnet-quickstart.json\Google.Apis.Auth.OAuth2.Responses.TokenResponse-user">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Areas\Admin\Views\AdminPartial\PartialPageIndex.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPartial\AddEditPartial.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\camera.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
@@ -603,6 +606,7 @@
     <Content Include="Views\Shared\Admin_Layout.cshtml" />
     <Content Include="Views\TestimonialClient\Index.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
+    <Content Include="Views\Shared\_PartialPages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

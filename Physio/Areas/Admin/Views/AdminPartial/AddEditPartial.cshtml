@@ -1,0 +1,108 @@
+﻿@model Models.PartialPageModel
+@{
+    ViewBag.Title = "Add/Update Partial Resources";
+    //Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+<script>
+    $(function () {
+        // Initialize your tinyMCE Editor with your preferred options
+        tinyMCE.init({
+            // General options
+            selector: '#tinyMCETextarea',
+            //mode: "textareas",
+            theme: "modern",          
+           // width: 800,
+            height: 400,
+            plugins: [
+              'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+              'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+              'save table contextmenu directionality emoticons template paste textcolor'
+            ],
+            content_css: "/scripts/tinymce/skins/lightgray/content.min.css",
+            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons'
+
+        });
+        //tinyMCE.activeEditor.setContent();      
+
+        $("#frmAddEditPartial").validate({
+
+            // Specify the validation rules
+            rules: {
+                PageCode: "required",
+                PageTitle: "required",
+                LongDesc: "required"
+            },
+
+            // Specify the validation error messages
+            messages: {
+                PageCode: "Please enter Page Code",
+                PageTitle: "Please enter Page Title",
+                LongDesc: "Please enter Long Description",
+            },
+
+            submitHandler: function (form) {
+                form.submit();
+            }
+        });
+
+    });
+</script>
+<div class="content indent">
+    <div class="container">
+        <h4>Add/Update Partial Resources</h4>
+        <div class="row">           
+            @using (Html.BeginForm("AddEditPartial", "AdminPartial", FormMethod.Post, new { id = "frmAddEditPartial", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PageCode, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.HiddenFor(model => model.PartialPageId)
+                                    @Html.TextBoxFor(model => model.PageCode, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PageCode, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PageTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">                                   
+                                    @Html.TextBoxFor(model => model.PageTitle, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ShortDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.ShortDesc, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ShortDesc, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.LongDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <!-- This will contain your HtmlContent and use the TinyMCE editor-->
+                                    @Html.TextAreaFor(model => model.LongDesc, new { @id = "tinyMCETextarea" })
+                                    @Html.HiddenFor(model => model.IsActive)
+                                    @Html.ValidationMessageFor(model => model.LongDesc, "", new { @class = "text-danger" })
+                                </div>
+                            </div>                          
+                        </div>                        
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                            @Html.ActionLink("Back", "PartialPageIndex", "AdminPartial", new { area = "Admin" }, new { @class = "btn btn-default" })
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>

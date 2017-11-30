@@ -78,8 +78,13 @@
     <Compile Include="Interface\IEmployee.cs" />
     <Compile Include="Interface\IGallery.cs" />
     <Compile Include="Interface\IHistory.cs" />
+    <Compile Include="Interface\IPartialPage.cs" />
     <Compile Include="Interface\IService.cs" />
     <Compile Include="Interface\ITestimonials.cs" />
+    <Compile Include="PartialPage.cs">
+      <DependentUpon>Physio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PartialPagesDAL.cs" />
     <Compile Include="Physio.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -112,7 +117,9 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Physio.edmx.diagram">
       <DependentUpon>Physio.edmx</DependentUpon>

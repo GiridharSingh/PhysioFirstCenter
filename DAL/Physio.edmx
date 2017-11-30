@@ -54,12 +54,9 @@
           <Property Name="Description" Type="varchar" MaxLength="500" />
           <Property Name="Joined_date" Type="datetime" />
           <Property Name="CreatedDate" Type="datetime" />
-          <Property Name="CreatedBy" Type="bigint" />
           <Property Name="UpdatedDate" Type="datetime" />
-          <Property Name="UpdatedBy" Type="bigint" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
-          <Property Name="Password" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Gallery">
           <Key>
@@ -84,6 +81,21 @@
           <Property Name="UpdatedDate" Type="datetime" />
           <Property Name="UpdatedBy" Type="bigint" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PartialPages">
+          <Key>
+            <PropertyRef Name="PartialPageId" />
+          </Key>
+          <Property Name="PartialPageId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PageCode" Type="varchar" MaxLength="100" />
+          <Property Name="PageTitle" Type="varchar" MaxLength="200" />
+          <Property Name="ShortDesc" Type="varchar" MaxLength="500" />
+          <Property Name="LongDesc" Type="varchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="bigint" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -135,6 +147,7 @@
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gallery" EntityType="Self.Gallery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PartialPages" EntityType="Self.PartialPages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Testimonials" EntityType="Self.Testimonials" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Appointment_Services" Association="Self.FK_Appointment_Services">
@@ -172,6 +185,7 @@
           <EntitySet Name="AboutClinics" EntityType="PhysioDevModel.AboutClinic" />
           <EntitySet Name="Testimonials" EntityType="PhysioDevModel.Testimonial" />
           <EntitySet Name="Galleries" EntityType="PhysioDevModel.Gallery" />
+          <EntitySet Name="PartialPages" EntityType="PhysioDevModel.PartialPage" />
         </EntityContainer>
         <EntityType Name="Service">
           <Key>
@@ -281,6 +295,21 @@
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="ImagePath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PartialPage">
+          <Key>
+            <PropertyRef Name="PartialPageId" />
+          </Key>
+          <Property Name="PartialPageId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PageCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ShortDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LongDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int64" />
+          <Property Name="PageTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -401,6 +430,22 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Decription" ColumnName="Decription" />
                 <ScalarProperty Name="PhotoId" ColumnName="PhotoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartialPages">
+            <EntityTypeMapping TypeName="PhysioDevModel.PartialPage">
+              <MappingFragment StoreEntitySet="PartialPages">
+                <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LongDesc" ColumnName="LongDesc" />
+                <ScalarProperty Name="ShortDesc" ColumnName="ShortDesc" />
+                <ScalarProperty Name="PageCode" ColumnName="PageCode" />
+                <ScalarProperty Name="PartialPageId" ColumnName="PartialPageId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
