@@ -17,7 +17,7 @@
                                     imgSrc = String.Format("data:image/gif;base64,{0}", base64);
                                 }
                             }
-                            <figure><img src="@imgSrc" alt=""></figure>
+                            <figure><img src="@imgSrc" alt="" class="img-responsive" style="max-height:310px;"></figure>
                             <div class="caption">
                                 <a href="#">@string.Concat(emp.First_Name, "  ", emp.Last_Name)</a>
                                 <p>@emp.Description</p>

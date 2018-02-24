@@ -1,0 +1,48 @@
+﻿@model Physio.Models.HomeViewModel
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 indent maxheight2 wow fadeInUp">
+        <p class="title">copyright</p>
+        <p class="prev">&copy; <em id="copyright-year"></em> <a href="index-5.html">Privacy Policy</a></p>
+        <ul class="follow_icon2">
+            <li><a href="#" class="fa fa-facebook"></a></li>
+            <li><a href="#" class="fa fa-google-plus"></a></li>
+            @*<li><a href="#" class="fa fa-rss"></a></li>
+            <li><a href="#" class="fa fa-pinterest"></a></li>*@
+            <li><a href="#" class="fa fa-linkedin"></a></li>
+        </ul>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 maxheight2 wow fadeInUp" data-wow-delay="0.2s">
+        <p class="title">Support Menu</p>
+        <ul class="list1">
+            <li><a href="~/Gallery/GalleryIndex">Gallery</a></li>
+            <li><a href="~/TestimonialClient/TestimonialIndex">Testimonial</a></li>
+            <li><a href="~/Home/Contact">Contact & Location </a></li>            
+        </ul>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 maxheight2 wow fadeInUp" data-wow-delay="0.1s">
+        <p class="title">Our Services</p>
+        <ul class="list1">
+            @foreach (var item in Model.lstServices)
+            {
+              <li><a href="@Url.Action("Index", "ServicesDetail", new { id = item.ServiceId })"> @Html.DisplayFor(modelItem => item.ServiceName) </a></li>
+            }
+
+            @*<li><a href="#">Special Promotions</a></li>
+            <li><a href="#">Newsletter</a></li>
+            <li><a href="#">Contact</a></li>*@
+        </ul>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 maxheight2 wow fadeInUp" data-wow-delay="0.3s">
+        <p class="title">About Us</p>
+        <ul class="list1">
+            @foreach (var item in Model.lstAboutClinic)
+            {
+             <li><a href="@Url.Action("Index", "ClinicDetail", new { id = item.Id })" > @Html.DisplayFor(modelItem => item.Name) </a></li>
+            }
+            @*<li><a href="#">Customer focus</a></li>
+            <li><a href="#">Performance</a></li>
+            <li><a href="#">Innovation</a></li>
+            <li><a href="#">Responsibility</a></li>*@
+        </ul>
+    </div>
+</div>

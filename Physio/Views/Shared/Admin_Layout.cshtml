@@ -57,7 +57,7 @@
                         <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "HistoriesIndex" ? "active" : "")">@Html.ActionLink("History", "HistoriesIndex", "Histories", new { area = "Admin" }, null)</li>
                         <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ServicesIndex" ? "active" : "")">@Html.ActionLink("Services", "ServicesIndex", "Services", new { area = "Admin" }, null)</li>                        
                         <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ShowTestimonials" ? "active" : "")">@Html.ActionLink("Testimonials", "ShowTestimonials", "Testimonial", new { area = "Admin" }, null)</li>
-                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ShowGallery" ? "active" : "")">@Html.ActionLink("Gallery Admin", "ShowGallery", "GalleryAdmin", new { area = "Admin" }, null)</li>
+                        @*<li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ShowGallery" ? "active" : "")">@Html.ActionLink("Gallery Admin", "ShowGallery", "GalleryAdmin", new { area = "Admin" }, null)</li>*@
                         <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "PartialPageIndex" ? "active" : "")">@Html.ActionLink("Partial Resources", "PartialPageIndex", "AdminPartial", new { area = "Admin" }, null)</li>
 
 

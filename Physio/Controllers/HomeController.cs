@@ -37,5 +37,15 @@ namespace Physio.Controllers
             var res = partialPage.GetPartialByPageCode(PageCode);
             return PartialView("_PartialPages", res);
         }
+
+        [ChildActionOnly]   
+        public ActionResult FooterIndex()
+        {
+            //Get the menuItems collection from somewhere
+            Physio.Models.HomeViewModel homeModel = new Physio.Models.HomeViewModel();
+           
+            return PartialView(homeModel);
+            //return View();
+        }
     }
 }
