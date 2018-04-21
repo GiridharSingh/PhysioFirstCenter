@@ -9,16 +9,13 @@ namespace Physio.Models
     {
         
         private readonly List<HistoryModel> _Histories = new List<HistoryModel>();
-        private readonly List<EmployeeModel> _Employees = new List<EmployeeModel>();
-        //private readonly List<TestimonialsModel> _Testimonials = new List<TestimonialsModel>();
+        private readonly List<EmployeeModel> _Employees = new List<EmployeeModel>();        
         public AboutViewModel()
         {
             HistoryDAL objHistoryDAL = new HistoryDAL();
-            EmployeeDAL objEmployeeDAL = new EmployeeDAL();
-            TestimonialsDAL objTestimonialsDAL = new TestimonialsDAL();
+            EmployeeDAL objEmployeeDAL = new EmployeeDAL();          
             _Histories = objHistoryDAL.GetAllHistories();
-            _Employees = objEmployeeDAL.GetEmployees();
-           // _Testimonials = objTestimonialsDAL.GetAllTestimonial();
+            _Employees = objEmployeeDAL.GetEmployees();         
         }
         public List<HistoryModel> lstHistory
         {
@@ -28,10 +25,6 @@ namespace Physio.Models
         public List<EmployeeModel> lstEmployee
         {
             get { return _Employees; }
-        }
-        //public List<TestimonialsModel> lstTestimonial
-        //{
-        //    get { return _Testimonials; }
-        //}
+        }       
     }
 }

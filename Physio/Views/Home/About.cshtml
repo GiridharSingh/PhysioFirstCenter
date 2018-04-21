@@ -29,46 +29,7 @@
                 <h2 class="wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">Our Staff</h2>
                 @Html.Partial("_Staff", Model.lstEmployee)
             </div>
-        </div>
-        <!-- It is commented For Time being But it is working
-            <div class="thumb-box10">
-            <div class="container">
-                <div class="row">
-                    <h2>Testimonials</h2>
-                    @foreach (var item in Model.lstTestimonial)
-                    {
-                        <div class="col-lg-6 col-md-12 col-sm-12 wow fadeInUp animated form-group" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-
-                            <div class="thumb-pad5">
-                                <div class="thumbnail">
-                                    <figure>
-                                        @{var imgSrc = "";
-                                            if (item.PatientImage != null)
-                                            {
-                                                var base64 = Convert.ToBase64String(item.PatientImage);
-                                                imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                                            }
-                                        <img src="@imgSrc" class="img-thumbnail" alt="" style="max-height:270px; max-width:270px" />
-                                        }
-
-                                    </figure>
-                                    <div class="caption max-height">
-                                        @{ var description = item.PatientExperience;
-                                        @Html.Raw(description)
-                                        }
-                                        <div>
-                                            <a href="#">@item.PatientName</a>
-                                            <p>@item.PatientDesignation</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-            </div>
-        </div>
-    --->
+        </div>      
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
